@@ -1,0 +1,185 @@
+body{
+
+    margin-top: 35px;
+    margin-left: 0px;
+    margin-right: 0px;
+    margin-bottom: 0px;
+}
+
+/* Style for Navigation bar starts here */
+
+    /* Add a black background color to the top navigation */
+.topnav {
+  background-color: #333;
+  overflow: hidden;
+  position: fixed;
+  top: 0;
+  left: 1;
+  right: 1;
+  width: 100%; 
+}
+
+/* Style the links inside the navigation bar */
+.topnav a {
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+/* Change the color of links on hover */
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+/* Add a color to the active/current link */
+.topnav a.active {
+  background-color: #4b5195;
+  color: white;
+}
+      
+/* Style for Navigation bar ends here */
+
+
+/* Style for Footer */
+    .footer {
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        background-color: dimgray;
+        color: white;
+        color: white;
+        padding-top: 2px;
+        padding-bottom: 2px;
+       text-align: center;
+  margin-top: 30px;
+  font-weight: 100;
+  clear: both;
+  font-family: unset;
+      }
+      
+/* Style for Footer ends here */
+
+/* Style for Footer */
+.footer1 {
+  
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: dimgray;
+  color: white;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  text-align: center;
+  margin-top: 10px;
+  font-weight: 100;
+  clear: both;
+}
+
+/* Style for Footer ends here */
+      
+.center-image{
+  display:flex;
+  justify-content:center; /* horizontally center */
+  align-items:center;    /* vertically center */
+  height:120px;
+  /* width:300px; */
+  margin-bottom: 5px;
+  background:whitesmoke;
+}
+
+.center-image img{
+ max-width:100%;
+ max-height:100%;
+}
+
+
+
+    
+/* CSS Code for Table displayed */
+   
+table {
+border-collapse: collapse;
+border: 1px solid black;
+width: 100%;
+color:#333;
+/* color: #588c7e; */
+font-family: monospace;
+font-size: 16px;
+text-align: left;
+}
+table, td, th {
+  padding-left: 10px;
+  border: 1px solid black;
+}
+th {
+background-color: #4b5195;
+color: white;
+border: 1px solid black;
+height: 50px;
+text-align: center;
+}
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+  border: 1px solid black;
+}
+
+/* CSS Code for Table displayed ends here */
+
+
+
+.container{
+    width: 80%;
+    margin-left: 20px;
+    margin-right: 0px;
+    margin-bottom: 50px;
+    margin-top: 1px;
+    padding: 20px;
+}
+
+label {
+    width:250px;
+    display: inline-block;
+  }
+  input{
+    width:200px;
+    display: inline-block;
+  }
+
+  button{
+    width: 200px;
+    display: inline-block;
+    margin: auto;
+  }
+
+  .center-content{
+    display:flex;
+    justify-content:center; /* horizontally center */
+    align-items:center;    /* vertically center */
+  }
+
+  .center-container{
+    padding: 100px;
+    vertical-align: middle;
+    align-content: center;
+  }
+  .redText{
+    display: inline-block;  
+    color: rgb(236, 13, 13);
+  }
+
+  p{
+    display: inline-block;
+  }
+
+  .radio{
+    width: 10px;
+  }
+
+
+
+      
