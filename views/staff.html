@@ -25,7 +25,7 @@
     
 
 <div class="container">
-  <form name="form1" action="queryFiles/addUser.php" method="POST">
+  <form name="form1" action="../api/staffData.php" method="POST">
 <h4>Staff Rgistration</h4>
 
 <label width=20px for="">Campus</label>  
@@ -33,36 +33,40 @@
 <input class="radio" width=20px type="radio" id="css" name="fav_language" value="AUS">
 <label style="width: 100px;" class="radio" for="css">AUS</label>
 
-<input class="radio" type="radio" id="javascript" name="fav_language" value="AUSDC">
-<label class="radio" for="javascript">AUSDC</label>
+<input class="radio" type="radio" id="javascript" name="fav_language" value="AUDC">
+<label class="radio" for="javascript">AUDC</label>
 <br><br>
 
+        <label width=20px for="">University ID/Appointment Letter No.</label>          
+        <input type="text" name="staff_id" required>
+        <br><br>
+
         <label width=20px for="">First Name</label>          
-        <input type="text" name="fname" required>
+        <input type="text" name="staff_fname" required>
         <br><br>
         <label for="">Last Name</label>          
-        <input type="text" name="lname" required>
+        <input type="text" name="staff_lname" required>
         <br><br>
         <label for="">Department/Centre/Section:</label>          
-        <input type="text" name="dept" id="dept" required>  
+        <input type="text" name="staff_dept" id="staff_dept" required>  
         <br><br> 
         <label for="">Email Id:</label>                
-        <input type="email" id="email" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required> 
+        <input type="email" id="staff_email" name="staff_email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required> 
         <br><br>  
         <label for="">Mobile Number</label>                
 
         <!-- <input name="mobno" type = "tel" placeholder="10 digit Number only" 
         pattern="[6-9]{1}[0-9]{3}[0-9]{3}[0-9]{3}" maxlength = "10" required/>     -->
-        <input id="mobno" name="mobno" type="text" onkeypress="return isNumber(event)" onchange="ValidateNo()" required/>
+        <input id="mobno" name="staff_mobno" type="text" onkeypress="return isNumber(event)" onchange="ValidateNo()" required/>
         <br><br>
         <label for="">Designation</label>                  
-        <input type="text" name="desig" > 
+        <input type="text" name="staff_desig" > 
         <br><br>
         <label for="">Date of Joining</label>                  
-        <input type="text" name="dateOfJoin" > 
+        <input type="date" name="staff_dateOfJoin" > 
         <br><br>
         <label for="">Completion of Contract</label>                  
-        <input type="text" name="yearOfCompletion" >  
+        <input type="date" name="staff_completionOfContract" >  
         <br><br>
         
         <br><br>
