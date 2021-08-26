@@ -5,16 +5,15 @@
 <title>NKN Wifi</title>
     <link rel="shortcut icon" href="../resources/favicon.ico">
     <link rel="stylesheet" type="text/css" href="../css/navbar.css">
-    <link rel="stylesheet" href="css/newform.css">
 </head>
 <body>
     <!-- Navigation bar for navstyle2.css -->
 <div class="topnav">
-  <a class="active" href="home.php">Home</a>
-  <a href="#news">News</a>
+  <a class="active" href="../index.html">Home</a>
+  <!-- <a href="#news">News</a>
   <a href="#contact">Contact</a>
   <a href="#about">About</a>
-  <a style="float:right" href="queryFiles/logout.php">Logout</a>
+  <a style="float:right" href="queryFiles/logout.php">Logout</a> -->
 </div>
  <!-- Navigation bar for navstyle2.css ends here -->
            
@@ -26,16 +25,16 @@
 
 <div class="container">
   <form name="form1" action="../api/staffData.php" method="POST">
-<h4>Staff Rgistration</h4>
-
+<h4>For Teaching/Non Teaching Staff Members</h4>
+        <!-- ___________________________________________Radio Button Starts____________________________________________ -->
 <label width=20px for="">Campus</label>  
+<input class="radio" width=20px type="radio" id="AUS" name="campus" value="AUS">
+<label style="width: 100px;" class="radio" for="AUS">AUS</label>
 
-<input class="radio" width=20px type="radio" id="css" name="fav_language" value="AUS">
-<label style="width: 100px;" class="radio" for="css">AUS</label>
-
-<input class="radio" type="radio" id="javascript" name="fav_language" value="AUDC">
-<label class="radio" for="javascript">AUDC</label>
+<input class="radio" type="radio" id="AUDC" name="campus" value="AUDC">
+<label class="radio" for="AUDC">AUDC</label>
 <br><br>
+        <!-- ___________________________________________Radio Button endss____________________________________________ -->
 
         <label width=20px for="">University ID/Appointment Letter No.</label>          
         <input type="text" name="staff_id" required>
@@ -60,10 +59,20 @@
         <input id="mobno" name="staff_mobno" type="text" onkeypress="return isNumber(event)" onchange="ValidateNo()" required/>
         <br><br>
         <label for="">Designation</label>                  
-        <input type="text" name="staff_desig" > 
+        <input type="text" name="staff_desig" required> 
         <br><br>
+        <!-- ___________________________________________Radio Button Starts____________________________________________ -->
+        <label width=20px for="">Staff Type</label>  
+<!-- Below value is set yes / no for isPermanent column in the table -->
+<input class="radio" width=20px type="radio" id="Contractual" name="staff_type" value="NO">
+<label style="width: 100px;" class="radio" for="Contractual">Contractual</label>
+
+<input class="radio" type="radio" id="Permanent" name="staff_type" value="YES">
+<label class="radio" for="Permanent">Permanent</label>
+<br><br>
+        <!-- ___________________________________________Radio Button ends____________________________________________ -->
         <label for="">Date of Joining</label>                  
-        <input type="date" name="staff_dateOfJoin" > 
+        <input type="date" name="staff_dateOfJoin" required> 
         <br><br>
         <label for="">Completion of Contract</label>                  
         <input type="date" name="staff_completionOfContract" >  
@@ -89,7 +98,7 @@
 <br>        
         
  <div  class="checkbox">
-            <input style="width: fit-content;" type="checkbox" value="iAgree" id="iAgree" name="iAgree">I declare that I have read and understoood the instructiions and also undertake to abide by all the above rules and regulations.
+            <input style="width: fit-content;" type="checkbox" value="iAgree" id="iAgree" name="iAgree" required>I declare that I have read and understoood the instructiions and also undertake to abide by all the above rules and regulations.
  </div>
 
  <br><br>
@@ -106,6 +115,6 @@
 
 </body>
 
-<script text="text/javascript" src="js/functions.js"></script>
+<script text="text/javascript" src="../js/functions.js"></script>
 
 </html>

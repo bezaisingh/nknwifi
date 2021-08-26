@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- <link rel="stylesheet" href="css/login.scss"> -->
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="../css/navbar.css">
+      
+
+    <title>Admin Login</title>
+</head>
+<body>
+
+<!-- Navigation bar for navstyle2.css -->
+<div class="topnav">
+    <a class="active" href="#">Home</a>
+    <!-- <a href="#news">News</a>
+    <a href="#contact">Contact</a>
+    <a href="#about">About</a> -->
+    <!-- <a style="float:right" href="queryFiles/logout.php">Logout</a> -->
+  </div>
+   <!-- Navigation bar for navstyle2.css ends here -->
+    
+
+    <div class="wrapper">   
+      
+      <div class=center-image>
+        <img src="../resources/logo.png" alt="Varsity Logo">  
+        <h2 align="center">AUEBS</h2>
+    </div>
+    
+    <!-- <h3 align="center">User Login Page</h3> -->
+
+    <div class="center-content">
+        <form class="form-signin" action="../api/adminlogin.php" method="POST">       
+            <h3 class="form-signin-heading">Admin Login</h3>
+            Username <br>
+            <input type="text" class="form-control" name="uid" placeholder="Email Address" required="" autofocus="" />
+            <br><br>
+            Password <br>
+            <input type="password" class="form-control" name="pwd" placeholder="Password" required=""/>     
+            <br><br>
+            <!-- <label class="checkbox">
+              <input type="checkbox" value="remember-me" id="rememberMe" name="rememberMe"> Remember me
+            </label> -->
+            <button class="btn-primary" type="submit" value="Login" name="login">Login</button>   
+          </form>
+    </div>
+
+
+      </div>
+<!--CSS for footer-->
+
+<div class="footer">
+  <p>Copyright &copy AUEBS</p>
+</div>
+
+</body>
+
+</html>

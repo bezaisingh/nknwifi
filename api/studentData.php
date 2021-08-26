@@ -12,6 +12,8 @@ include 'dbConfig.php';
 if(isset($_POST["submit"]))
 {
 
+$Campus=$_POST["campus"];
+
 $Enroll=$_POST["enroll"];
 
 $Fname=$_POST["fname"];
@@ -47,10 +49,11 @@ if(!empty($_POST['email'])){
     
 
         $sql="INSERT INTO student_user(
+                                         campus,
                                          enrollNo,
                                          firstName,
                                          lastName, 
-                                    department,
+                                         department,
                                          email, 
                                          mobNo, 
                                          courseName, 
@@ -60,15 +63,13 @@ if(!empty($_POST['email'])){
                                          ) 
                                          
                                          VALUES (
+                                                    '$Campus',
                                                     '$Enroll',
                                                     '$Fname',
                                                     '$Lname',
-                                                    '$Dept', 
-                                                   
-                                                    
+                                                    '$Dept',                                                
                                                     '$Email',
                                                     '$MobNo',
-                                                    
                                                     '$Course',
                                                     '$Semester',
                                                     '$YearOfCompletion',
@@ -92,6 +93,11 @@ if(!empty($_POST['email'])){
     }
      
 } 
+
+echo   '<script type="text/javascript"> 
+alert("Fatal Error"); 
+window.location.href = "../index.html";
+</script>';
    
     mysqli_close($conn);
    

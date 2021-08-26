@@ -180,6 +180,13 @@ label {
     width: 10px;
   }
 
+  .btn-primary{
+    width: 100%;
+    margin-left: auto;
+    vertical-align: middle;
+    align-content: center;
+  }
+
 
 
       
