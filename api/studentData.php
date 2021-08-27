@@ -13,25 +13,22 @@ if(isset($_POST["submit"]))
 {
 
 $Campus=$_POST["campus"];
-
 $Enroll=$_POST["enroll"];
-
 $Fname=$_POST["fname"];
-
 $Lname=$_POST["lname"];
 
+$FatherName=$_POST["father"];
+$Gender=$_POST["gender"];
+$Dob=$_POST["dob"];
+$Address=$_POST["addr"];
+
+
 $Dept=$_POST["dept"];
-
 $Email=$_POST["email"];
-
 $MobNo=$_POST["mobno"];
-
 $Course=$_POST["course"];
-
 $Semester=$_POST["semester"];
-
 $YearOfCompletion=$_POST["yearOfCompletion"];
-
 $HostelNo=$_POST["hostelNo"];
 
     
@@ -53,6 +50,10 @@ if(!empty($_POST['email'])){
                                          enrollNo,
                                          firstName,
                                          lastName, 
+                                         fatherName,
+                                         gender,
+                                         dob,
+                                         address,
                                          department,
                                          email, 
                                          mobNo, 
@@ -67,6 +68,10 @@ if(!empty($_POST['email'])){
                                                     '$Enroll',
                                                     '$Fname',
                                                     '$Lname',
+                                                    '$FatherName',
+                                                    '$Gender',
+                                                    '$Dob',
+                                                    '$Address',
                                                     '$Dept',                                                
                                                     '$Email',
                                                     '$MobNo',

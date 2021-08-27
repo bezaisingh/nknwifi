@@ -19,8 +19,8 @@
            
         <div class=center-image>
             <img src="../resources/logo.png" alt="Varsity Logo">  
-            <h2 align="center">NKN Wifi Registration Form</h2>
-        </div>
+            <h2 align="center">NKN-Internet Access Registration Form</h2>
+          </div>
     
 
 <div class="container">
@@ -46,6 +46,25 @@
         <label for="">Last Name</label>          
         <input type="text" name="staff_lname" required>
         <br><br>
+
+        <label for="">Father's Name</label>          
+        <input type="text" name="staff_father" required>
+        <br><br>
+<!-- ____________________________________ Gender Start _____________________________________________________ -->
+        <label width=20px for="">Gender</label>  
+        <input class="radio" width=20px type="radio" id="Male" name="staff_gender" value="Male">
+        <label style="width: 100px;" class="radio" for="Male">Male</label>
+        <input class="radio" type="radio" id="Female" name="staff_gender" value="Female">
+        <label class="radio" for="Female">Female</label>
+        <br><br>
+<!-- ____________________________________ Gender End _____________________________________________________ -->
+        <label for="">Date of Birth</label>          
+        <input type="date" name="staff_dob" required>
+        <br><br>
+        <label for="">Address</label>          
+        <textarea rows="4" cols="33" name="staff_addr"placeholder='Address' required></textarea>
+        <br><br>
+
         <label for="">Department/Centre/Section:</label>          
         <input type="text" name="staff_dept" id="staff_dept" required>  
         <br><br> 

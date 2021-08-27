@@ -108,8 +108,8 @@ border: 1px solid black;
 width: 100%;
 color:#333;
 /* color: #588c7e; */
-font-family: monospace;
-font-size: 16px;
+/* font-family: monospace; */
+font-size: 12px;
 text-align: left;
 }
 table, td, th {
@@ -167,6 +167,12 @@ label {
     vertical-align: middle;
     align-content: center;
   }
+
+  .applicants-table{
+    padding: 20px;
+    align-content: center;
+  }
+
   .redText{
     display: inline-block;  
     color: rgb(236, 13, 13);

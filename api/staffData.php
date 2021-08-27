@@ -18,6 +18,12 @@ $Campus=$_POST["campus"];
 $StaffId=$_POST["staff_id"];
 $Fname=$_POST["staff_fname"];
 $Lname=$_POST["staff_lname"];
+
+$FatherName=$_POST["staff_father"];
+$Gender=$_POST["staff_gender"];
+$Dob=$_POST["staff_dob"];
+$Address=$_POST["staff_addr"];
+
 $Dept=$_POST["staff_dept"];
 $Email=$_POST["staff_email"];
 $MobNo=$_POST["staff_mobno"];
@@ -57,12 +63,16 @@ if(!empty($_POST['staff_email'])){
                                                             staffId,
                                                             firstName,
                                                             lastName, 
+                                                            fatherName,
+                                                            gender,
+                                                            dob,
+                                                            address,
                                                             department,
                                                             email, 
                                                             mobNo, 
                                                             designation, 
                                                             joiningDate, 
-                                                            isPermanent
+                                                            isPermanent,
                                                             contractEndDate 
                                                                                                 
                                                             ) 
@@ -72,6 +82,10 @@ if(!empty($_POST['staff_email'])){
                                                                     '$StaffId',
                                                                     '$Fname',
                                                                     '$Lname',
+                                                                    '$FatherName',
+                                                                    '$Gender',
+                                                                    '$Dob',
+                                                                    '$Address',
                                                                     '$Dept',                                                
                                                                     '$Email',
                                                                     '$MobNo',

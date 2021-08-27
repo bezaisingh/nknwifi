@@ -19,8 +19,8 @@
            
         <div class=center-image>
             <img src="../resources/logo.png" alt="Varsity Logo">  
-            <h2 align="center">NKN Wifi Registration Form</h2>
-        </div>
+            <h2 align="center">NKN-Internet Access Registration Form</h2>
+          </div>
     
 
 <div class="container">
@@ -45,6 +45,23 @@
         <label for="">Last Name</label>          
         <input type="text" name="lname" required>
         <br><br>
+        <label for="">Father's Name</label>          
+        <input type="text" name="father" required>
+        <br><br>
+<!-- ____________________________________ Gender Start _____________________________________________________ -->
+        <label width=20px for="">Gender</label>  
+        <input class="radio" width=20px type="radio" id="Male" name="gender" value="Male">
+        <label style="width: 100px;" class="radio" for="Male">Male</label>
+        <input class="radio" type="radio" id="Female" name="gender" value="Female">
+        <label class="radio" for="Female">Female</label>
+        <br><br>
+<!-- ____________________________________ Gender End _____________________________________________________ -->
+        <label for="">Date of Birth</label>          
+        <input type="date" name="dob" required>
+        <br><br>
+        <label for="">Address</label>          
+        <textarea rows="4" cols="33" name="addr"placeholder='Address' required></textarea>
+        <br><br>
         <label for="">Department/Centre/Section:</label>          
         <input type="text" name="dept" id="dept" required>  
         <br><br> 
@@ -61,13 +78,13 @@
         <input type="text" name="course" required> 
         <br><br>
         <label for="">Semester/Year</label>                  
-        <input type="text" name="semester" > 
+        <input type="number" name="semester" > 
         <br><br>
         <label for="">Expected Date/Year of completion:</label>                  
         <input type="text" name="yearOfCompletion" required>  
         <br><br>
         <label for="">Hostel No</label>                  
-        <input type="text" name="hostelNo" >
+        <input type="number" name="hostelNo" >
         
         <br><br>
 <H4>Terms and Conditions</H4>
