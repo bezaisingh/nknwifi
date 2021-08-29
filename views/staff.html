@@ -19,12 +19,12 @@
            
         <div class=center-image>
             <img src="../resources/logo.png" alt="Varsity Logo">  
-            <h2 align="center">NKN-Internet Access Registration Form</h2>
+            <h2 align="center">NKN-Internet & Wifi Access Registration Form</h2>
           </div>
     
 
 <div class="container">
-  <form name="form1" action="../api/staffData.php" method="POST">
+  <form action="../api/staffData.php" method="POST" enctype="multipart/form-data">
 <h4>For Teaching/Non Teaching Staff Members</h4>
         <!-- ___________________________________________Radio Button Starts____________________________________________ -->
 <label width=20px for="">Campus</label>  
@@ -62,7 +62,8 @@
         <input type="date" name="staff_dob" required>
         <br><br>
         <label for="">Address</label>          
-        <textarea rows="4" cols="33" name="staff_addr"placeholder='Address' required></textarea>
+        <textarea rows="5" cols="26" name="staff_addr"
+        placeholder='House No, Street Name,        District                State                     Pin' required></textarea>
         <br><br>
 
         <label for="">Department/Centre/Section:</label>          
@@ -70,12 +71,14 @@
         <br><br> 
         <label for="">Email Id:</label>                
         <input type="email" id="staff_email" name="staff_email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required> 
+        <label class="redText" for="">Active ID to be given</label>
         <br><br>  
         <label for="">Mobile Number</label>                
 
         <!-- <input name="mobno" type = "tel" placeholder="10 digit Number only" 
         pattern="[6-9]{1}[0-9]{3}[0-9]{3}[0-9]{3}" maxlength = "10" required/>     -->
-        <input id="mobno" name="staff_mobno" type="text" onkeypress="return isNumber(event)" onchange="ValidateNo()" required/>
+        <input id="mobno" name="staff_mobno" type="text" onkeypress="return isNumber(event)" onchange="ValidateNo()" required/> 
+        <label class="redText" for="">Active No.</label>
         <br><br>
         <label for="">Designation</label>                  
         <input type="text" name="staff_desig" required> 
@@ -94,8 +97,22 @@
         <input type="date" name="staff_dateOfJoin" required> 
         <br><br>
         <label for="">Completion of Contract</label>                  
-        <input type="date" name="staff_completionOfContract" >  
+        <input type="date" name="staff_completionOfContract" >  <label class="redText" for="">For Contractual Only</label>
+        <br>
+        <p class="redText">Note: Only jpg, jpeg, png format is allowed, Only Appointment Letter/University ID will be Accepted </p>
+        <br>
+        <label for="idfront">ID Front:</label>
+        <input type='file' id="idfront" name='idf' required> 
+        <label class="redText" for="">File size should not exceed 300kb</label>
         <br><br>
+        <label for="idpb">ID Back:</label>
+        <input type='file' id="idpb" name='idb' required> 
+        <label class="redText" for="">File size should not exceed 300kb</label>
+        <br><br>
+        <label for="dp">Passport Size Photo:</label>
+        <input type='file' id="dp" name="pp" required> 
+        <label class="redText" for="">File size should not exceed 300kb</label>
+
         
         <br><br>
 <H4>Terms and Conditions</H4>

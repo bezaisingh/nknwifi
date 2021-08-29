@@ -19,13 +19,13 @@
            
         <div class=center-image>
             <img src="../resources/logo.png" alt="Varsity Logo">  
-            <h2 align="center">NKN-Internet Access Registration Form</h2>
+            <h2 align="center">NKN-Internet & Wifi Access Registration Form</h2>
           </div>
     
 
 <div class="container">
-  <form name="form1" action="../api/studentData.php" method="POST">
-<h4>Student Rgistration</h4>
+  <form name="form1" action="../api/studentData.php" method="POST" enctype="multipart/form-data">
+<h4>Student Registration</h4>
 
 <label width=20px for="">Campus</label>  
 
@@ -60,19 +60,22 @@
         <input type="date" name="dob" required>
         <br><br>
         <label for="">Address</label>          
-        <textarea rows="4" cols="33" name="addr"placeholder='Address' required></textarea>
+        <textarea rows="4" cols="26" name="addr"
+        placeholder='House No, Street Name,        District                State                     Pin' required></textarea>
         <br><br>
         <label for="">Department/Centre/Section:</label>          
         <input type="text" name="dept" id="dept" required>  
         <br><br> 
         <label for="">Email Id:</label>                
         <input type="email" id="email" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required> 
+        <label class="redText" for="">Active ID to be given</label>
         <br><br>  
         <label for="">Mobile Number</label>                
 
         <!-- <input name="mobno" type = "tel" placeholder="10 digit Number only" 
         pattern="[6-9]{1}[0-9]{3}[0-9]{3}[0-9]{3}" maxlength = "10" required/>     -->
         <input id="mobno" name="mobno" type="text" onkeypress="return isNumber(event)" onchange="ValidateNo()" required/>
+        <label class="redText" for="">Active No.</label>
         <br><br>
         <label for="">Course Name</label>                  
         <input type="text" name="course" required> 
@@ -84,7 +87,20 @@
         <input type="text" name="yearOfCompletion" required>  
         <br><br>
         <label for="">Hostel No</label>                  
-        <input type="number" name="hostelNo" >
+        <input type="number" name="hostelNo" > <label class="redText" for="">For Hostellers only</label>
+        <br>
+        <p class="redText">Note: Only jpg, jpeg, png format is allowed, Only University ID Card will be Accepted </p>
+        <br>
+        <label for="idfront">ID Front:</label>
+        <input type='file' id="idfront" name='idf' required> 
+        <label class="redText" for="">University ID card only</label>
+        <br><br>
+        <label for="idpb">ID Back:</label>
+        <input type='file' id="idpb" name='idb' required> 
+        <label class="redText" for="">University ID card only</label>
+        <br><br>
+        <label for="dp">Profile Pic:</label>
+        <input type='file' id="dp" name="pp" required> 
         
         <br><br>
 <H4>Terms and Conditions</H4>

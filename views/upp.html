@@ -1,0 +1,62 @@
+<!DOCTYPE <!DOCTYPE html>
+<html>
+ <head>
+         
+                <title>KYC Form</title>
+
+
+
+</head>
+
+<body>
+
+    <h1>nknwifi</h1>
+
+
+</div>
+<br><br>
+
+<div id="sidebar">
+
+Images Must be Less than 300kb in Size 
+and resolution not more than 200px in Width and 150px in Height.
+    
+</div>
+<br>
+<br>
+
+<div class="row">
+<form action="../api/upp.php" method="POST" enctype="multipart/form-data">
+    
+    <label width=20px for="">Enrollment/Id Card No.</label>          
+    <input type="text" name="enroll" required>
+    <br><br>
+
+    <div class="row">
+    <label for="idfront">ID Front:</label>
+    <input type='file' id="idfront" name='idf' required> 
+    <br>
+    <br>
+
+    
+    
+    <label for="idpb">ID Back:</label>
+    <input type='file' id="idpb" name='idb' required> 
+    <br>
+    <br>
+
+    </div>
+    
+    <div class="row">
+    <label for="dp">Profile Pic:</label>
+    <input type='file' id="dp" name="pp" required> 
+    <br>
+    <br>
+
+    </div>
+
+        <button type="submit" name="submit">Upload</button><br> <br>
+</form>
+
+
+</body>
