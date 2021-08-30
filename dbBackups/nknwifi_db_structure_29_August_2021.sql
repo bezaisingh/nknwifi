@@ -35,7 +35,7 @@ CREATE TABLE IF NOT EXISTS `admin_table` (
   `uid` varchar(20) NOT NULL,
   `pwd` varchar(20) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -79,7 +79,7 @@ CREATE TABLE IF NOT EXISTS `staff_user` (
   `contractEndDate` varchar(30) DEFAULT NULL,
   `isApproved` smallint DEFAULT '0',
   PRIMARY KEY (`id`,`staffId`,`email`,`mobNo`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -101,13 +101,13 @@ CREATE TABLE IF NOT EXISTS `student_user` (
   `department` varchar(30) DEFAULT NULL,
   `courseName` varchar(30) DEFAULT NULL,
   `yearOfCompletion` varchar(10) DEFAULT NULL,
-  `email` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `mobNo` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `email` varchar(30) CHARACTER SET utf8mb4  NOT NULL,
+  `mobNo` varchar(30) CHARACTER SET utf8mb4  NOT NULL,
   `semester` int DEFAULT NULL,
   `hostelNo` int DEFAULT NULL,
   `isApproved` smallint DEFAULT '0',
   PRIMARY KEY (`id`,`enrollNo`,`email`,`mobNo`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

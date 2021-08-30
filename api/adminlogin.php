@@ -10,11 +10,18 @@
 			$sqli_run=mysqli_query($conn,$sql);
 			if(mysqli_num_rows($sqli_run)>0)
 			{
+				$row = $sqli_run->fetch_assoc();
 				$_SESSION['uid']=$username;
-				header("location:../views/applicants.php");
-			}
-			else
-			{               
+				$accessLevel=$row['access_lvl'];
+				echo $accessLevel;
+					if ($accessLevel==1){
+						// echo "Access level: '$accessLevel'";
+						header("location:../views/pending.php");
+
+					}else{
+						header("location:../views/approved.php");
+					}  
+			}		           
         
 		  /*For popup window and to redirect to login page*/
                 
@@ -22,7 +29,7 @@
                         alert("Wrong Credentials.. Try again!!!"); 
                         window.location.href = "../views/admin.html";
                         </script>';
-			}
+			
 				mysqli_close($conn);
 		}
 		?>

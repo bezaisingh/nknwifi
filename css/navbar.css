@@ -103,6 +103,8 @@ body{
 /* CSS Code for Table displayed */
    
 table {
+  /* position: relative; */
+  /* display: inline-block; */
 border-collapse: collapse;
 border: 1px solid black;
 width: 100%;
@@ -169,7 +171,7 @@ label {
   }
 
   .applicants-table{
-    padding: 20px;
+    padding: 5px;
     align-content: center;
   }
 
@@ -191,6 +193,15 @@ label {
     margin-left: auto;
     vertical-align: middle;
     align-content: center;
+  }
+
+  .table_image{
+    padding: 2px 2px 2px 2px;
+    box-align:center;
+    width: 100px;
+    height: 100px; 
+    /* width:100%;
+    max-width:200px" */
   }
 
 
