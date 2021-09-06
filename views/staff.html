@@ -70,15 +70,15 @@
         <input type="text" name="staff_dept" id="staff_dept" required>  
         <br><br> 
         <label for="">Email Id:</label>                
-        <input type="email" id="staff_email" name="staff_email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required> 
-        <label class="redText" for="">Active ID to be given</label>
+        <input type="email" id="staff_email" name="staff_email" placeholder="Active ID to be given" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required> 
+        <!-- <label class="redText" for="">Active ID to be given</label> -->
         <br><br>  
         <label for="">Mobile Number</label>                
 
         <!-- <input name="mobno" type = "tel" placeholder="10 digit Number only" 
         pattern="[6-9]{1}[0-9]{3}[0-9]{3}[0-9]{3}" maxlength = "10" required/>     -->
-        <input id="mobno" name="staff_mobno" type="text" onkeypress="return isNumber(event)" onchange="ValidateNo()" required/> 
-        <label class="redText" for="">Active No.</label>
+        <input id="mobno" name="staff_mobno" type="text" placeholder="Active No." onkeypress="return isNumber(event)" onchange="ValidateNo()" required/> 
+        <!-- <label class="redText" for="">Active No.</label> -->
         <br><br>
         <label for="">Designation</label>                  
         <input type="text" name="staff_desig" required> 
@@ -91,13 +91,15 @@
 
 <input class="radio" type="radio" id="Permanent" name="staff_type" value="YES">
 <label class="radio" for="Permanent">Permanent</label>
+
 <br><br>
         <!-- ___________________________________________Radio Button ends____________________________________________ -->
         <label for="">Date of Joining</label>                  
         <input type="date" name="staff_dateOfJoin" required> 
         <br><br>
         <label for="">Completion of Contract</label>                  
-        <input type="date" name="staff_completionOfContract" >  <label class="redText" for="">For Contractual Only</label>
+        <input type="date" name="staff_completionOfContract" >  
+        <label class="redText" for="">For Contractual Only</label>
         <br>
         <p class="redText">Note: Only jpg, jpeg, png format is allowed, Only Appointment Letter/University ID will be Accepted </p>
         <br>
@@ -140,13 +142,13 @@
  <br><br>
 
         <label> </label>
-        <button type="submit" name="submit" value="Save">  Save </button>
+        <button class="btn-primary" type="submit" name="submit" value="Save">  Save </button>
 
   </form>
 </div>
 
 <div class="footer">
-  <p>Copyright &copy AUEBS</p>
+  <p>Copyright &copy AUS</p>
 </div>
 
 </body>

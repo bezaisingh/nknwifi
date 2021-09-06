@@ -67,15 +67,15 @@
         <input type="text" name="dept" id="dept" required>  
         <br><br> 
         <label for="">Email Id:</label>                
-        <input type="email" id="email" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required> 
-        <label class="redText" for="">Active ID to be given</label>
+        <input type="email" id="email" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" placeholder="Active ID to be given" required> 
+        <!-- <label class="redText" for="">Active ID to be given</label> -->
         <br><br>  
         <label for="">Mobile Number</label>                
 
         <!-- <input name="mobno" type = "tel" placeholder="10 digit Number only" 
         pattern="[6-9]{1}[0-9]{3}[0-9]{3}[0-9]{3}" maxlength = "10" required/>     -->
-        <input id="mobno" name="mobno" type="text" onkeypress="return isNumber(event)" onchange="ValidateNo()" required/>
-        <label class="redText" for="">Active No.</label>
+        <input id="mobno" name="mobno" type="text" placeholder="Active No." onkeypress="return isNumber(event)" onchange="ValidateNo()" required/>
+        <!-- <label class="redText" for="">Active No.</label> -->
         <br><br>
         <label for="">Course Name</label>                  
         <input type="text" name="course" required> 
@@ -87,7 +87,8 @@
         <input type="text" name="yearOfCompletion" required>  
         <br><br>
         <label for="">Hostel No</label>                  
-        <input type="number" name="hostelNo" > <label class="redText" for="">For Hostellers only</label>
+        <input type="number" name="hostelNo" placeholder="For Hostellers only" > 
+        <!-- <label class="redText" for="">For Hostellers only</label> -->
         <br>
         <p class="redText">Note: Only jpg, jpeg, png format is allowed, Only University ID Card will be Accepted </p>
         <br>
@@ -127,14 +128,14 @@
 
  <br><br>
 
-        <label> </label>
-        <button type="submit" name="submit" value="Save">  Save </button>
+        <!-- <label> </label> -->
+        <button class="btn-primary" type="submit" name="submit" value="Save">  Save </button>
 
   </form>
 </div>
 
 <div class="footer">
-  <p>Copyright &copy AUEBS</p>
+  <p>Copyright &copy AUS</p>
 </div>
 
 </body>

@@ -135,9 +135,9 @@ tr:nth-child(even) {
 
 
 .container{
-    width: 80%;
+    width: 90%;
     margin-left: 20px;
-    margin-right: 0px;
+    margin-right: 20px;
     margin-bottom: 50px;
     margin-top: 1px;
     padding: 20px;
@@ -153,9 +153,10 @@ label {
   }
 
   button{
-    width: 200px;
-    display: inline-block;
-    margin: auto;
+    display:inline-block;     /*Typically a button wouldn't need its own line*/
+    margin:0 auto;
+    width: 300px; 
+    height: 25px;
   }
 
   .center-content{
@@ -189,10 +190,9 @@ label {
   }
 
   .btn-primary{
-    width: 100%;
-    margin-left: auto;
-    vertical-align: middle;
-    align-content: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;   
   }
 
   .table_image{
