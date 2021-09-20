@@ -99,7 +99,7 @@ if(!empty($_POST['enroll'])){
         // echo"<script>alert('Email ID already exists')</script>";
         echo   '<script type="text/javascript"> 
                 alert("Duplicate Enrollment number Error Code:001!!!"); 
-                window.location.href = "../views/student.html";
+                window.location.href ="javascript:history.back(1)";
                 </script>';
         }
 
@@ -112,7 +112,8 @@ if(!empty($_POST['enroll'])){
             // echo"<script>alert('Email ID already exists')</script>";
             echo   '<script type="text/javascript"> 
                     alert("Duplicate Enrollment number Error Code:002 !!!"); 
-                    window.location.href = "../views/student.html";
+                    window.location.href ="javascript:history.back(1)";
+                    // window.location.href = "../views/student.html";
                     </script>';
             }
 
@@ -124,7 +125,8 @@ if(!empty($_POST['enroll'])){
                 {
                     echo   '<script type="text/javascript"> 
                     alert("Phone number already used!!!"); 
-                    window.location.href = "../views/student.html";
+                    window.location.href ="javascript:history.back(1)";
+                    // window.location.href = "../views/student.html";
                     </script>';
                 }
 
@@ -381,7 +383,7 @@ elseif (in_array($idfActExt, $allowed)) {
 
 echo   '<script type="text/javascript"> 
 alert("Fatal Error"); 
-window.location.href = "../index.html";
+window.location.href ="javascript:history.back(1)";
 </script>';
    
     mysqli_close($conn);

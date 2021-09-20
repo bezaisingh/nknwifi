@@ -178,7 +178,7 @@ label {
 
   .redText{
     display: inline-block;  
-    color: rgb(236, 13, 13);
+    /* color: rgb(236, 13, 13); */
   }
 
   p{
