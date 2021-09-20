@@ -12,7 +12,7 @@ MySQL - 8.0.21 : Database - nknwifi
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
-CREATE DATABASE /*!32312 IF NOT EXISTS*/`nknwifi` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
+CREATE DATABASE /*!32312 IF NOT EXISTS*/`nknwifi` /*!40100 DEFAULT CHARACTER SET utf8mb4  */ /*!80016 DEFAULT ENCRYPTION='N' */;
 
 USE `nknwifi`;
 
@@ -25,9 +25,9 @@ CREATE TABLE `admin_table` (
   `auth_user` varchar(20) NOT NULL,
   `uid` varchar(20) NOT NULL,
   `pwd` varchar(20) NOT NULL,
-  `access_lvl` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `access_lvl` varchar(20) CHARACTER SET utf8mb4 NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 ;
 
 /*Data for the table `admin_table` */
 
@@ -78,7 +78,7 @@ CREATE TABLE `staff_user` (
   `contractEndDate` varchar(30) DEFAULT NULL,
   `isApproved` smallint DEFAULT '0',
   PRIMARY KEY (`id`,`staffId`,`email`,`mobNo`)
-) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 ;
 
 /*Data for the table `staff_user` */
 
@@ -104,13 +104,13 @@ CREATE TABLE `student_user` (
   `department` varchar(30) DEFAULT NULL,
   `courseName` varchar(30) DEFAULT NULL,
   `yearOfCompletion` varchar(10) DEFAULT NULL,
-  `email` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `mobNo` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `email` varchar(30) CHARACTER SET utf8mb4  NOT NULL,
+  `mobNo` varchar(30) CHARACTER SET utf8mb4  NOT NULL,
   `semester` int DEFAULT NULL,
   `hostelNo` int DEFAULT NULL,
   `isApproved` smallint DEFAULT '0',
   PRIMARY KEY (`id`,`enrollNo`,`email`,`mobNo`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `student_user` */
 
