@@ -172,13 +172,13 @@ elseif (in_array($idfActExt, $allowed)) {
                                             //When all there is no error in the files provided by the users then the pics will be uploaded 
                                                 //ID Front
                                             move_uploaded_file($idfTmpName,$idfDestination);
-                                            echo "ID Front Upload Success"; 
+                                            // echo "ID Front Upload Success"; //commented on 21 sept 2021
                                                 //ID Back
                                             move_uploaded_file($idbTmpName,$idbDestination);
-                                            echo "Id Back Upload Success";    
+                                            // echo "Id Back Upload Success";    //commented on 21 sept 2021
                                                 //Photo
                                             move_uploaded_file($ppTmpName,$ppDestination);
-                                            echo "Photo Upload Success";
+                                            // echo "Photo Upload Success"; //commented on 21 sept 2021
 
                                             // when all files are uploaded successfully then the data will be saved in the db
                                             $sql1="INSERT INTO data_uploads(enrollNo, IdFront, IdBack, Photo) 
