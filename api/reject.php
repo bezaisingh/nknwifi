@@ -19,7 +19,7 @@ $sqli_run=mysqli_query($conn,$sql);
             /*For popup window and to redirect to xxxx page*/
             echo   '<script type="text/javascript"> 
             alert("Rejected!!!"); 
-            window.location.href = "../views/applicants.php";
+            window.location.href = "../views/pending.php";
             </script>';
                 
     }else{

@@ -25,7 +25,7 @@
 // Defining function
         function nmName()
         {
-            echo "My name is Baklol";
+            echo "Data is printed from the function.php page";
         }
 
 
