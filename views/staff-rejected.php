@@ -28,10 +28,10 @@ if ($_SESSION["uid"] == null){
 <html>
  <title>Rejected Applicants</title>
 <div class="topnav">
-<a class="active" href="rejected.php">Home</a>
-  <a href="approved.php">Approved</a>
-  <a href="rejected.php">Rejected</a>
-  <a href="pending.php">Pending</a>
+<a href="admin-home.html">Home</a>
+  <a href="staff-approved.php">Approved</a>
+  <a class="active" href="staff-rejected.php">Rejected</a>
+  <a href="staff-pending.php">Pending</a>
   <a style="float:right" href="../api/logout.php">Logout</a>
 </div>
         
@@ -47,7 +47,7 @@ if ($_SESSION["uid"] == null){
 
 <div class="center-image">
 <img src="../resources/logo.png" alt="Varsity Logo">
-<h2 align="center">Rejected Applicants List</h2>
+<h2 align="center">Rejected Staff Applicants List</h2>
 </div>
   
 
@@ -85,7 +85,7 @@ include "../api/dbConfig.php";
     // echo '<br>';
     
 $sql = "SELECT * FROM `student_user` JOIN `data_uploads` WHERE 
-student_user.enrollNo = data_uploads.enrollNo and isApproved =2";
+staff_user.enrollNo = data_uploads.enrollNo and isApproved =2";
 
 // $sql= "SELECT * FROM student_user";
     
@@ -109,9 +109,9 @@ echo "<tr>
             <td>" . $row["gender"] . "</td>
             <td>" . $row["email"] . "</td>
             <td>" . $row["mobNo"] . "</td>
-            <td><image id='myImg' alt='ID Front' class='table_image' src='".$row['IdFront']."'>
-            <td><image id='myImg1' alt='ID Back' class='table_image' src='".$row['IdBack']."'>
-            <td><image id='myImg2' alt='Photo' class='table_image' src='".$row['Photo']."'>
+            <td><image id='myImg' onClick='myFunc(this)' alt='ID Front' class='table_image' src='".$row['IdFront']."'>
+            <td><image id='myImg' onClick='myFunc(this)' alt='ID Back' class='table_image' src='".$row['IdBack']."'>
+            <td><image id='myImg' onClick='myFunc(this)' alt='Photo' class='table_image' src='".$row['Photo']."'>
             <td><a href = '../api/approve.php?enrollNo=$row[enrollNo]'>Approve</td>
 
 
