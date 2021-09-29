@@ -88,7 +88,7 @@ include "../api/dbConfig.php";
     // echo '<br>';
     
 $sql = "SELECT * FROM `staff_user` JOIN `data_uploads` WHERE 
-staff_user.enrollNo = data_uploads.enrollNo and isApproved =1";
+staff_user.enrollNo = data_uploads.enrollNo and isApproved =1 ORDER BY id DESC";
 
 // $sql= "SELECT * FROM student_user";
     

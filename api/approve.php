@@ -9,7 +9,8 @@ $EnrollNo=$_GET['enrollNo'];
 
 //isAppoved 0 means pending, 1 means Approved, 2 means rejected.
 $sql="UPDATE student_user
-SET isApproved = 1
+SET isApproved = 1,
+    approvedOn= CURDATE()
 WHERE enrollNo='$EnrollNo'";
 
 $sqli_run=mysqli_query($conn,$sql);
@@ -19,7 +20,7 @@ $sqli_run=mysqli_query($conn,$sql);
             /*For popup window and to redirect to xxxx page*/
             echo   '<script type="text/javascript"> 
             alert("Approved!!!"); 
-            window.location.href = "../views/applicants.php";
+            window.location.href ="javascript:history.back(1)";
             </script>';
                 
     }else{

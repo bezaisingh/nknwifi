@@ -206,7 +206,8 @@ elseif (in_array($idfActExt, $allowed)) {
                                                 courseName, 
                                                 semester, 
                                                 yearOfCompletion, 
-                                                hostelNo                                      
+                                                hostelNo,
+                                                appliedOn
                                                 ) 
                                                 
                                                 VALUES (
@@ -224,17 +225,18 @@ elseif (in_array($idfActExt, $allowed)) {
                                                            '$Course',
                                                            '$Semester',
                                                            '$YearOfCompletion',
-                                                           '$HostelNo'
+                                                           '$HostelNo',
+                                                           CURDATE()
                                                            )";
                             
                                 if($conn->query($sql1)===TRUE){
 
                                     if($conn->query($sql2)===TRUE){
-                                        echo"Record Inserted Code 202";
+                                        // echo"Record Inserted Code 202";
                                         }else{
                                             echo"Error:" . $sql2 . "<br>" . $conn->error;
                                              }
-                                        echo"Record Inserted Successfully Code 201";
+                                        // echo"Record Inserted Successfully Code 201"; 
                                             }
                                             else
                                             {

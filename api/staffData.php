@@ -97,7 +97,7 @@ if(!empty($_POST['staff_id'])){
             // echo"<script>alert('Email ID already exists')</script>";
             echo   '<script type="text/javascript"> 
             alert("ID already exists Error Code:101!"); 
-            window.location.href = "../views/staff.html";
+            window.location.href ="javascript:history.back(1)";
             </script>';
         }
         elseif(!empty($_POST['staff_id'])){
@@ -109,7 +109,7 @@ if(!empty($_POST['staff_id'])){
             // echo"<script>alert('Email ID already exists')</script>";
             echo   '<script type="text/javascript"> 
                     alert("Duplicate Enrollment number Error Code:202 !!!"); 
-                    window.location.href = "../views/student.html";
+                    window.location.href ="javascript:history.back(1)";
                     </script>';
             }
             elseif(!empty($_POST['staff_email'])){
@@ -122,7 +122,7 @@ if(!empty($_POST['staff_id'])){
                 // echo"<script>alert('Email ID already exists')</script>";
                 echo   '<script type="text/javascript"> 
                 alert("Email ID already exists!"); 
-                window.location.href = "../views/staff.html";
+                window.location.href ="javascript:history.back(1)";
                 </script>';
             }
              elseif (!empty($_POST['staff_mobno'])) {
@@ -133,7 +133,7 @@ if(!empty($_POST['staff_id'])){
                         {
                             echo   '<script type="text/javascript"> 
                             alert("Phone number already used!!!"); 
-                            window.location.href = "../views/staff.html";
+                            window.location.href ="javascript:history.back(1)";
                             </script>';
                         }
 
@@ -200,7 +200,8 @@ elseif (in_array($idfActExt, $allowed)) {
                                                 designation, 
                                                 joiningDate, 
                                                 isPermanent,
-                                                contractEndDate 
+                                                contractEndDate,
+                                                appliedOn 
                                                                                     
                                                 ) 
                                                 
@@ -219,18 +220,19 @@ elseif (in_array($idfActExt, $allowed)) {
                                                         '$Designation',
                                                         '$JoiningDate',
                                                         '$StaffType',
-                                                        '$ContactCompletion'                                                    
+                                                        '$ContactCompletion',
+                                                        CURDATE()                                                   
                                                         )";
 
                             
                                 if($conn->query($sql1)===TRUE){
 
                                     if($conn->query($sql2)===TRUE){
-                                        echo"Record Inserted Code 202";
+                                        // echo"Record Inserted Code 202"; for sql2
                                         }else{
                                             echo"Error:" . $sql2 . "<br>" . $conn->error;
                                              }
-                                        echo"Record Inserted Successfully Code 201";
+                                        // echo"Record Inserted Successfully Code 201"; for sql1
                                             }
                                             else
                                             {
