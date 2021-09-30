@@ -59,6 +59,7 @@ if ($_SESSION["uid"] == null){
   <table>
 <tr>
 <th>Sl No</th>
+<th>Id</th>
 <th>Campus</th>
 <th>Enroll No</th>
 <th>Name</th>
@@ -84,8 +85,9 @@ include "../api/dbConfig.php";
 //$meter_no= $_SESSION["meter_no"];
     // echo '<br>';
     
-$sql = "SELECT * FROM `student_user` JOIN `data_uploads` WHERE 
-student_user.enrollNo = data_uploads.enrollNo and isApproved =2";
+
+    $sql = "SELECT *, ROW_NUMBER() OVER (ORDER BY id DESC) AS SrNo FROM `student_user` JOIN data_uploads WHERE 
+    student_user.enrollNo = data_uploads.enrollNo  AND isApproved =2";
 
 // $sql= "SELECT * FROM student_user";
     
@@ -98,6 +100,7 @@ if($result !== false && $result->num_rows > 0)
 // output data of each row
 while($row = $result->fetch_assoc()) {
 echo "<tr>
+            <td>" . $row["SrNo"] . "</td>
             <td>" . $row["id"] . "</td>
             <td>" . $row["campus"] . "</td>
             <td>" . $row["enrollNo"]. "</td>

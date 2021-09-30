@@ -59,6 +59,7 @@ if ($_SESSION["uid"] == null){
   <table>
 <tr>
 <th>Sl No</th>
+<th>Id</th>
 <th>Campus</th>
 <th>Enroll No</th>
 <th>Name</th>
@@ -72,7 +73,6 @@ if ($_SESSION["uid"] == null){
 <th>ID Front</th>
 <th>ID Back</th>
 <th>Photo</th>
-<th colspan="2">Action</th>
 
 </tr>
 <?php
@@ -84,8 +84,11 @@ include "../api/dbConfig.php";
 //$meter_no= $_SESSION["meter_no"];
     // echo '<br>';
     
-$sql = "SELECT * FROM `student_user` JOIN `data_uploads` WHERE 
-student_user.enrollNo = data_uploads.enrollNo and isApproved =1";
+// $sql = "SELECT * FROM `student_user` JOIN `data_uploads` WHERE 
+// student_user.enrollNo = data_uploads.enrollNo and isApproved =1";
+
+$sql = "SELECT *, ROW_NUMBER() OVER (ORDER BY id DESC) AS SrNo FROM `student_user` JOIN data_uploads WHERE 
+student_user.enrollNo = data_uploads.enrollNo  AND isApproved =1";
 
 // $sql= "SELECT * FROM student_user";
     
@@ -98,6 +101,7 @@ if($result !== false && $result->num_rows > 0)
 // output data of each row
 while($row = $result->fetch_assoc()) {
 echo "<tr>
+            <td>" . $row["SrNo"] . "</td>
             <td>" . $row["id"] . "</td>
             <td>" . $row["campus"] . "</td>
             <td>" . $row["enrollNo"]. "</td>
@@ -129,6 +133,19 @@ $conn->close();
 ?>
 </table>
   </div>
+
+                <!-- ////////////////////////////// Export Part Starts /////////////////////// -->
+                <div>
+            <form class="form-horizontal" action="functions.php" method="post" name="upload_excel"   
+                      enctype="multipart/form-data">
+                  <div class="form-group">
+                            <div class="col-md-4 col-md-offset-4">
+                                <input type="submit" name="Export-Approved-Students" class="btn btn-success" value="Export to Excel"/>
+                            </div>
+                   </div>                    
+            </form>           
+    </div>
+                  <!-- ////////////////////////////// Export Part Ends /////////////////////// -->
 
     <!-- The Modal -->
 <div id="myModal" class="modal">

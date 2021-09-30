@@ -36,11 +36,9 @@ if ($_SESSION["uid"] == null){
 </div>
         
     <head>
-
         <link rel="stylesheet" type="text/css" href="../css/navbar.css">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" type="text/css" href="../css/modal.css">
-        
+        <link rel="stylesheet" type="text/css" href="../css/modal.css">        
     </head>
     
 <body style='padding-left:6px' > <!--to align the entire content in centre-->
@@ -58,24 +56,24 @@ if ($_SESSION["uid"] == null){
   <div class='applicants-table'>
   <table>
 <tr>
-<th>Sl No</th>
-<th>Campus</th>
-<th>Staff ID</th>
-<th>Name</th>
-<th>Father</th>
-<th>Gender</th>
-<th>DOB</th>
-<th>Address</th>
-<th>Department</th>
-<th>Designation</th>
-<th>Email</th>
-<th>Phone</th>
-<th>Is Permanent?</th>
-<th>Contract ends on</th>
-<th>ID Front</th>
-<th>ID Back</th>
-<th>Photo</th>
-<th colspan="2">Action</th>
+<th>Serial no</th>
+    <th>Id</th>
+    <th>Campus</th>
+    <th>Staff ID</th>
+    <th>Name</th>
+    <!-- <th>Father</th> -->
+    <th>Gender</th>
+    <!-- <th>DOB</th> -->
+    <th>Address</th>
+    <th>Department</th>
+    <th>Designation</th>
+    <th>Email</th>
+    <th>Phone</th>
+    <th>Is Permanent?</th>
+    <th>Contract ends on</th>
+    <th>ID Front</th>
+    <th>ID Back</th>
+    <th>Photo</th>
 
 </tr>
 <?php
@@ -87,8 +85,9 @@ include "../api/dbConfig.php";
 //$meter_no= $_SESSION["meter_no"];
     // echo '<br>';
     
-$sql = "SELECT * FROM `staff_user` JOIN `data_uploads` WHERE 
-staff_user.enrollNo = data_uploads.enrollNo and isApproved =1 ORDER BY id DESC";
+    $sql = "SELECT *, ROW_NUMBER() OVER (ORDER BY id DESC) AS SrNo FROM `staff_user` JOIN data_uploads WHERE 
+    staff_user.staffId = data_uploads.enrollNo  AND isApproved =1";
+
 
 // $sql= "SELECT * FROM student_user";
     
@@ -101,20 +100,19 @@ if($result !== false && $result->num_rows > 0)
 // output data of each row
 while($row = $result->fetch_assoc()) {
 echo "<tr>
+            <td>" . $row["SrNo"] . "</td>
             <td>" . $row["id"] . "</td>
             <td>" . $row["campus"] . "</td>
-            <td>" . $row["staff_id"]. "</td>
-            <td>" . $row["staff_fname"] .' ' .$row["staff_lname"]."</td>
-            <td>" . $row["fatherName"] . "</td>
+            <td>" . $row["staffId"]. "</td>
+            <td>" . $row["firstName"] .' ' .$row["lastName"]."</td>
             <td>" . $row["gender"] . "</td>
-            <td>" . $row["dob"] . "</td>
-            <td>" . $row["staff_addr"] . "</td>
+            <td>" . $row["address"] . "</td>
             <td>" . $row["department"]. "</td>
             <td>" . $row["designation"] . "</td>
             <td>" . $row["email"] . "</td>
             <td>" . $row["mobNo"] . "</td>
-            <td>" . $row["staff_type"]. "</td>
-            <td>" . $row["staff_completionOfContract"] . "</td>
+            <td>" . $row["isPermanent"]. "</td>
+            <td>" . $row["contractEndDate"] . "</td>
             <td><image id='myImg' onClick='myFunc(this)' alt='ID Front' class='table_image' src='".$row['IdFront']."'>
             <td><image id='myImg' onClick='myFunc(this)' alt='ID Back' class='table_image' src='".$row['IdBack']."'>
             <td><image id='myImg' onClick='myFunc(this)' alt='Photo' class='table_image' src='".$row['Photo']."'>
@@ -135,6 +133,19 @@ $conn->close();
 ?>
 </table>
   </div>
+
+              <!-- ////////////////////////////// Export Part Starts /////////////////////// -->
+              <div>
+            <form class="form-horizontal" action="functions.php" method="post" name="upload_excel"   
+                      enctype="multipart/form-data">
+                  <div class="form-group">
+                            <div class="col-md-4 col-md-offset-4">
+                                <input type="submit" name="Export-Approved-Staff" class="btn btn-success" value="Export to Excel"/>
+                            </div>
+                   </div>                    
+            </form>           
+    </div>
+                  <!-- ////////////////////////////// Export Part Ends /////////////////////// -->
 
     <!-- The Modal -->
 <div id="myModal" class="modal">

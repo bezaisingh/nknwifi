@@ -1,32 +1,127 @@
 <?php
+include '../api/dbConfig.php';
 
-// Defining function
-		// Function to get the client IP address
-        function get_client_ip() {
-            $ipaddress = '';
-            if (isset($_SERVER['HTTP_CLIENT_IP']))
-                $ipaddress = $_SERVER['HTTP_CLIENT_IP'];
-            else if(isset($_SERVER['HTTP_X_FORWARDED_FOR']))
-                $ipaddress = $_SERVER['HTTP_X_FORWARDED_FOR'];
-            else if(isset($_SERVER['HTTP_X_FORWARDED']))
-                $ipaddress = $_SERVER['HTTP_X_FORWARDED'];
-            else if(isset($_SERVER['HTTP_FORWARDED_FOR']))
-                $ipaddress = $_SERVER['HTTP_FORWARDED_FOR'];
-            else if(isset($_SERVER['HTTP_FORWARDED']))
-                $ipaddress = $_SERVER['HTTP_FORWARDED'];
-            else if(isset($_SERVER['REMOTE_ADDR']))
-                $ipaddress = $_SERVER['REMOTE_ADDR'];
-            else
-                $ipaddress = 'UNKNOWN';
-            return $ipaddress;
-        }
-        get_client_ip();
 
-// Defining function
-        function nmName()
-        {
-            echo "Data is printed from the function.php page";
-        }
+ ////////////////////////////// Export Part Starts for Approved Staffs ///////////////////////
+ if(isset($_POST["Export-Approved-Staff"])){
+     
 
+    header('Content-Type: text/csv; charset=utf-8');  
+    header('Content-Disposition: attachment; filename=staff-data.csv');  
+    $output = fopen("php://output", "w");  
+    fputcsv($output, array('Sr No',
+                                'ID', 
+                                'Campus', 
+                                'Staff Id', 
+                                'First Name', 
+                                'Last Name', 
+                                'Father Name', 
+                                'Gender', 
+                                'Email', 
+                                'Mobile No', 
+                                'Address', 
+                                'Date of Birth', 
+                                'Department', 
+                                'Joining Date', 
+                                'Is Permanent', 
+                                'Contract End Date', 
+                                'Applied On', 
+                                'Approved on' ));  
+    // $query = "SELECT id, campus, enrollNo,firstName,lastName FROM student_user ORDER BY id DESC";  
+    // $result = mysqli_query($conn, $query);  
+
+    $sql="SELECT ROW_NUMBER() OVER (ORDER BY id DESC) AS SrNo,
+                                                            id,
+                                                            campus,
+                                                            staffId,
+                                                            firstName,
+                                                            lastName,
+                                                            fatherName,
+                                                            gender,
+                                                            email,
+                                                            mobNo,
+                                                            address,
+                                                            dob,
+                                                            department,
+                                                            joiningDate,
+                                                            isPermanent,
+                                                            contractEndDate,
+                                                            appliedOn,
+                                                            approvedOn                  
+
+                                                        FROM staff_user WHERE isApproved =1";
+    $sqli_run=mysqli_query($conn, $sql);
+
+    while($row = mysqli_fetch_assoc($sqli_run))  
+    {  
+         fputcsv($output, $row);  
+    }  
+    fclose($output);  
+}  
+
+ ////////////////////////////// Export Part Ends for Approved Staffs ///////////////////////
+
+
+
+
+  ////////////////////////////// Export Part Starts for Approved Students ///////////////////////
+  if(isset($_POST["Export-Approved-Students"])){
+     
+    header('Content-Type: text/csv; charset=utf-8');  
+    header('Content-Disposition: attachment; filename=student-data.csv');  
+    $output = fopen("php://output", "w");  
+    fputcsv($output, array('Sr No',
+                                'ID', 
+                                'Campus', 
+                                'Enroll No', 
+                                'First Name', 
+                                'Last Name', 
+                                'Father Name', 
+                                'Gender', 
+                                'Email', 
+                                'Mobile No', 
+                                'Address', 
+                                'Date of Birth', 
+                                'Department', 
+                                'Course Name', 
+                                'Expected Year of Completion', 
+                                'Semester', 
+                                'Hostel No', 
+                                'Applied On', 
+                                'Approved on' ));  
+    // $query = "SELECT id, campus, enrollNo,firstName,lastName FROM student_user ORDER BY id DESC";  
+    // $result = mysqli_query($conn, $query);  
+
+    $sql="SELECT ROW_NUMBER() OVER (ORDER BY id DESC) AS SrNo,
+                                                            id,
+                                                            campus,
+                                                            enrollNo,
+                                                            firstName,
+                                                            lastName,
+                                                            fatherName,
+                                                            gender,
+                                                            email,
+                                                            mobNo,
+                                                            address,
+                                                            dob,
+                                                            department,
+                                                            courseName,
+                                                            yearOfCompletion,
+                                                            semester,
+                                                            hostelNo,
+                                                            appliedOn,
+                                                            approvedOn                  
+
+                                                        FROM student_user WHERE isApproved =1";
+    $sqli_run=mysqli_query($conn, $sql);
+
+    while($row = mysqli_fetch_assoc($sqli_run))  
+    {  
+         fputcsv($output, $row);  
+    }  
+    fclose($output);  
+}  
+
+ ////////////////////////////// Export Part Ends for Approved Students ///////////////////////
 
 ?>
