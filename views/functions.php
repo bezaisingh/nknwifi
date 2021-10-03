@@ -1,8 +1,14 @@
 <?php
 include '../api/dbConfig.php';
 
+$from=$_POST['export-from'];;
+$to=$_POST['export-to'];
+
 
  ////////////////////////////// Export Part Starts for Approved Staffs ///////////////////////
+
+
+
  if(isset($_POST["Export-Approved-Staff"])){
      
 
@@ -30,33 +36,63 @@ include '../api/dbConfig.php';
     // $query = "SELECT id, campus, enrollNo,firstName,lastName FROM student_user ORDER BY id DESC";  
     // $result = mysqli_query($conn, $query);  
 
-    $sql="SELECT ROW_NUMBER() OVER (ORDER BY id DESC) AS SrNo,
-                                                            id,
-                                                            campus,
-                                                            staffId,
-                                                            firstName,
-                                                            lastName,
-                                                            fatherName,
-                                                            gender,
-                                                            email,
-                                                            mobNo,
-                                                            address,
-                                                            dob,
-                                                            department,
-                                                            joiningDate,
-                                                            isPermanent,
-                                                            contractEndDate,
-                                                            appliedOn,
-                                                            approvedOn                  
+    if(empty($from) || empty($to) ){
+                    $sql="SELECT ROW_NUMBER() OVER (ORDER BY id DESC) AS SrNo,
+                    id,
+                    campus,
+                    staffId,
+                    firstName,
+                    lastName,
+                    fatherName,
+                    gender,
+                    email,
+                    mobNo,
+                    address,
+                    dob,
+                    department,
+                    joiningDate,
+                    isPermanent,
+                    contractEndDate,
+                    appliedOn,
+                    approvedOn             
+                FROM staff_user WHERE isApproved =1";
 
-                                                        FROM staff_user WHERE isApproved =1";
-    $sqli_run=mysqli_query($conn, $sql);
+                $sqli_run=mysqli_query($conn, $sql);
+                while($row = mysqli_fetch_assoc($sqli_run))  
+                {  
+                fputcsv($output, $row);  
+                }  
+                fclose($output);  
+    }else{
+                $sql="SELECT ROW_NUMBER() OVER (ORDER BY id DESC) AS SrNo,
+                id,
+                campus,
+                staffId,
+                firstName,
+                lastName,
+                fatherName,
+                gender,
+                email,
+                mobNo,
+                address,
+                dob,
+                department,
+                joiningDate,
+                isPermanent,
+                contractEndDate,
+                appliedOn,
+                approvedOn     
+                FROM staff_user WHERE approvedOn between '$from' and '$to'";
 
-    while($row = mysqli_fetch_assoc($sqli_run))  
-    {  
-         fputcsv($output, $row);  
-    }  
-    fclose($output);  
+            $sqli_run=mysqli_query($conn, $sql);
+            while($row = mysqli_fetch_assoc($sqli_run))  
+            {  
+            fputcsv($output, $row);  
+            }  
+            fclose($output); 
+    }
+
+ 
 }  
 
  ////////////////////////////// Export Part Ends for Approved Staffs ///////////////////////
@@ -92,34 +128,65 @@ include '../api/dbConfig.php';
     // $query = "SELECT id, campus, enrollNo,firstName,lastName FROM student_user ORDER BY id DESC";  
     // $result = mysqli_query($conn, $query);  
 
-    $sql="SELECT ROW_NUMBER() OVER (ORDER BY id DESC) AS SrNo,
-                                                            id,
-                                                            campus,
-                                                            enrollNo,
-                                                            firstName,
-                                                            lastName,
-                                                            fatherName,
-                                                            gender,
-                                                            email,
-                                                            mobNo,
-                                                            address,
-                                                            dob,
-                                                            department,
-                                                            courseName,
-                                                            yearOfCompletion,
-                                                            semester,
-                                                            hostelNo,
-                                                            appliedOn,
-                                                            approvedOn                  
+    if(empty($from) || empty($to) ){
+                    $sql="SELECT ROW_NUMBER() OVER (ORDER BY id DESC) AS SrNo,
+                    id,
+                    campus,
+                    enrollNo,
+                    firstName,
+                    lastName,
+                    fatherName,
+                    gender,
+                    email,
+                    mobNo,
+                    address,
+                    dob,
+                    department,
+                    courseName,
+                    yearOfCompletion,
+                    semester,
+                    hostelNo,
+                    appliedOn,
+                    approvedOn            
+                FROM student_user WHERE isApproved =1";
 
-                                                        FROM student_user WHERE isApproved =1";
-    $sqli_run=mysqli_query($conn, $sql);
+            $sqli_run=mysqli_query($conn, $sql);
+            while($row = mysqli_fetch_assoc($sqli_run))  
+            {  
+            fputcsv($output, $row);  
+            }  
+            fclose($output); 
+                }  
+                else{
+                    $sql="SELECT ROW_NUMBER() OVER (ORDER BY id DESC) AS SrNo,
+                    id,
+                    campus,
+                    enrollNo,
+                    firstName,
+                    lastName,
+                    fatherName,
+                    gender,
+                    email,
+                    mobNo,
+                    address,
+                    dob,
+                    department,
+                    courseName,
+                    yearOfCompletion,
+                    semester,
+                    hostelNo,
+                    appliedOn,
+                    approvedOn            
+                FROM student_user WHERE approvedOn between '$from' and '$to'";
 
-    while($row = mysqli_fetch_assoc($sqli_run))  
-    {  
-         fputcsv($output, $row);  
-    }  
-    fclose($output);  
+            $sqli_run=mysqli_query($conn, $sql);
+            while($row = mysqli_fetch_assoc($sqli_run))  
+            {  
+            fputcsv($output, $row);  
+            }  
+            fclose($output); 
+
+                }
 }  
 
  ////////////////////////////// Export Part Ends for Approved Students ///////////////////////

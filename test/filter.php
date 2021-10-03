@@ -80,8 +80,8 @@
                 $to=date('Y-m-d',strtotime($_POST['to']));
             
                 //MySQLi Object-oriented
-                $oquery=$conn->query("SELECT *, ROW_NUMBER() OVER (ORDER BY id DESC) AS SrNo FROM `student_user` where approvedOn between '$from' and '$to'");
-                while($row = $oquery->fetch_array()){
+                $sql=$conn->query("SELECT *, ROW_NUMBER() OVER (ORDER BY id DESC) AS SrNo FROM `student_user` where approvedOn between '$from' and '$to'");
+                while($row = $sql->fetch_array()){
                     ?>
                     <tr>
                         <td><?php echo $row['SrNo']?></td>
@@ -100,9 +100,50 @@
                     <?php 
                 }
             }
+            else{
+
+                 //MySQLi Object-oriented
+                 $sql=$conn->query("SELECT *, ROW_NUMBER() OVER (ORDER BY id DESC) AS SrNo FROM `student_user` 
+                                                    WHERE isApproved = '1'");
+                 while($row = $sql->fetch_array()){
+                     ?>
+                     <tr>
+                         <td><?php echo $row['SrNo']?></td>
+                         <td><?php echo $row['id']?></td>
+                         <td><?php echo $row['campus']?></td>
+                         <td><?php echo $row['enrollNo']?></td>                    
+                         <td><?php echo $row['firstName']; echo " "; echo $row['lastName']?></td>
+                         <td><?php echo $row['department']?></td>
+                         <td><?php echo $row['courseName']?></td>
+                         <td><?php echo $row['semester']?></td>
+                         <td><?php echo $row['fatherName']?></td>
+                         <td><?php echo $row['gender']?></td>
+                         <td><?php echo $row['email']?></td>
+                         <td><?php echo $row['mobNo']?></td>
+                     </tr>
+                     <?php 
+
+                 }
+
+
+            }
         ?>
         </tbody>
     </table>
 </div>
+
+            <!-- ////////////////////////////// Export Part Starts /////////////////////// -->
+            <div>
+            <form class="form-horizontal" action="functions.php" method="post" name="upload_excel"   
+                      enctype="multipart/form-data">
+                  <div class="form-group">
+                            <div class="col-md-4 col-md-offset-4">
+                            <label>From: </label><input type="date" name="from">
+                            <label>To: </label><input type="date" name="to">
+                                <input type="submit" name="exp-date" class="btn btn-success" value="export to excel"/>
+                            </div>
+                   </div>                    
+            </form>           
+    </div>
 </body>
 </html>

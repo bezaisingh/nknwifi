@@ -54,6 +54,13 @@ if ($_SESSION["uid"] == null){
     </div> -->
 
   <div class='applicants-table'>
+      <div align= 'right'>
+        <form method="POST">
+            <label class='less-space'>From: </label><input class='less-space' type="date" name="from">
+            <label class='less-space'>To: </label><input class='less-space' type="date" name="to">
+            <input class='less-space' style='margin-right: 20px; width: 110px;' type="submit" value="Get Data" name="submit">
+        </form>
+    </div>
   <table>
 <tr>
 <th>Serial no</th>
@@ -80,17 +87,15 @@ if ($_SESSION["uid"] == null){
     
     /* To connect to db */
 include "../api/dbConfig.php";
-/*    echo $_SESSION["meter_no"];
-    echo '<br>';*/
-//$meter_no= $_SESSION["meter_no"];
-    // echo '<br>';
-    
-    $sql = "SELECT *, ROW_NUMBER() OVER (ORDER BY id DESC) AS SrNo FROM `staff_user` JOIN data_uploads WHERE 
-    staff_user.staffId = data_uploads.enrollNo  AND isApproved =1";
 
+if (isset($_POST['submit'])){
 
-// $sql= "SELECT * FROM student_user";
-    
+  $from=date('Y-m-d',strtotime($_POST['from']));
+  $to=date('Y-m-d',strtotime($_POST['to']));
+
+  $sql = "SELECT *, ROW_NUMBER() OVER (ORDER BY id DESC) AS SrNo FROM `staff_user` JOIN data_uploads WHERE 
+    staff_user.staffId = data_uploads.enrollNo  AND approvedOn BETWEEN '$from' AND '$to'";
+
 $result = $conn->query($sql);
     
 if($result !== false && $result->num_rows > 0)
@@ -117,30 +122,62 @@ echo "<tr>
             <td><image id='myImg' onClick='myFunc(this)' alt='ID Back' class='table_image' src='".$row['IdBack']."'>
             <td><image id='myImg' onClick='myFunc(this)' alt='Photo' class='table_image' src='".$row['Photo']."'>
                     
-      </tr>";
-
-      // <td>".$row[""]."</td>
-            // <td>" . $row["mob_no"]. "</td>
-            // <td>" . $row["email"]. "</td>
-            // <td>" . $row["bill_no"] . "</td>
-            // <td>" . $row["bill_period"]. "</td>
-            // <td>" . $row["bill_date"]."</td>  
-            // <td>" . $row["unit_consumed"] . "</td>    
+      </tr>"; 
 }
 echo "</table>";
 } else { echo "0 results"; }
 $conn->close();
+}else{
+        $sql = "SELECT *, ROW_NUMBER() OVER (ORDER BY id DESC) AS SrNo FROM `staff_user` JOIN data_uploads WHERE 
+        staff_user.staffId = data_uploads.enrollNo  AND isApproved =1";
+
+        
+$result = $conn->query($sql);
+    
+if($result !== false && $result->num_rows > 0)
+    
+   /* ($result->num_rows > 0)*/ 
+{
+// output data of each row
+while($row = $result->fetch_assoc()) {
+echo "<tr>
+            <td>" . $row["SrNo"] . "</td>
+            <td>" . $row["id"] . "</td>
+            <td>" . $row["campus"] . "</td>
+            <td>" . $row["staffId"]. "</td>
+            <td>" . $row["firstName"] .' ' .$row["lastName"]."</td>
+            <td>" . $row["gender"] . "</td>
+            <td>" . $row["address"] . "</td>
+            <td>" . $row["department"]. "</td>
+            <td>" . $row["designation"] . "</td>
+            <td>" . $row["email"] . "</td>
+            <td>" . $row["mobNo"] . "</td>
+            <td>" . $row["isPermanent"]. "</td>
+            <td>" . $row["contractEndDate"] . "</td>
+            <td><image id='myImg' onClick='myFunc(this)' alt='ID Front' class='table_image' src='".$row['IdFront']."'>
+            <td><image id='myImg' onClick='myFunc(this)' alt='ID Back' class='table_image' src='".$row['IdBack']."'>
+            <td><image id='myImg' onClick='myFunc(this)' alt='Photo' class='table_image' src='".$row['Photo']."'>
+                    
+      </tr>"; 
+}
+echo "</table>";
+} else { echo "0 results"; }
+$conn->close();
+}
+
 ?>
 </table>
   </div>
 
-              <!-- ////////////////////////////// Export Part Starts /////////////////////// -->
-              <div>
+                <!-- ////////////////////////////// Export Part Starts /////////////////////// -->
+                <div align= 'right'>
             <form class="form-horizontal" action="functions.php" method="post" name="upload_excel"   
                       enctype="multipart/form-data">
                   <div class="form-group">
                             <div class="col-md-4 col-md-offset-4">
-                                <input type="submit" name="Export-Approved-Staff" class="btn btn-success" value="Export to Excel"/>
+                            <label class='less-space'>From </label><input class='less-space' type="date" name="export-from">
+                            <label class='less-space'>To </label><input class='less-space' type="date" name="export-to">
+                            <input class='less-space' style='margin-right: 20px; width: 110px;' type="submit" name="Export-Approved-Staff" class="btn btn-success" value="Export to Excel"/>
                             </div>
                    </div>                    
             </form>           

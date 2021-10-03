@@ -1,6 +1,38 @@
 <?php
 
 include 'config.php';
+
+ ////////////////////////////// Export With Date Part Starts ///////////////////////
+$from=$_POST['from'];;
+$to=$_POST['to'];
+
+ if(isset($_POST["exp-date"])){
+     
+  header('Content-Type: text/csv; charset=utf-8');  
+  header('Content-Disposition: attachment; filename=data.csv');  
+  $output = fopen("php://output", "w");  
+  fputcsv($output, array('ID', 'Campus', 'Enroll No', 'First Name', 'Last Name'));  
+  // $query = "SELECT id, campus, enrollNo,firstName,lastName FROM student_user ORDER BY id DESC";  
+  // $result = mysqli_query($conn, $query);  
+
+  // $sql="SELECT id, campus, enrollNo,firstName,lastName FROM student_user ORDER BY id DESC";
+  $sql="SELECT id, campus, enrollNo,firstName,lastName FROM `student_user` where approvedOn between '$from' and '$to'";
+
+  $sqli_run=mysqli_query($conn, $sql);
+
+  while($row = mysqli_fetch_assoc($sqli_run))  
+  {  
+       fputcsv($output, $row);  
+  }  
+  fclose($output);  
+}  
+
+////////////////////////////// Export with date Part Ends ///////////////////////
+
+
+
+
+
  ////////////////////////////// Export Part Starts ///////////////////////
 
  if(isset($_POST["Export"])){
