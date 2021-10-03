@@ -246,7 +246,7 @@ elseif (in_array($idfActExt, $allowed)) {
                                   </script>';
 
                                   echo '<script type="text/javascript"> 
-                                  alert("Your Credentials will be mailed to you after verification of Data within 3 days, Kindly have patience. Thanks & Regards @ Computer Centre"); 
+                                  alert("Your Credentials will be mailed to you after verification of Data within few days, Kindly have patience. Thanks & Regards @ Computer Centre"); 
                                    window.location.href = "../index.html";
                                 </script>';
                         
