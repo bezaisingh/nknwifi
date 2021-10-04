@@ -132,7 +132,7 @@
     </table>
 </div>
 
-            <!-- ////////////////////////////// Export Part Starts /////////////////////// -->
+            <!-- ////////////////////////////// Export by date Part Starts /////////////////////// -->
             <div>
             <form class="form-horizontal" action="functions.php" method="post" name="upload_excel"   
                       enctype="multipart/form-data">
@@ -145,5 +145,92 @@
                    </div>                    
             </form>           
     </div>
+
+                <!-- ////////////////////////////// Export by date Part Ends /////////////////////// -->
+
+            <!-- ////////////////////////////// Search Part Starts /////////////////////// -->
+                <div>
+            <form class="form-horizontal" action="" method="post"   
+                      enctype="multipart/form-data">
+                  <div class="form-group">
+                            <div class="col-md-4 col-md-offset-4">
+                            <label>Enrollment Number: </label><input type="text" name="enrollNo">
+                            <label>Email Id: </label><input type="email" name="email">
+                            <label>Phone No: </label><input type="number" name="phone">
+                            <input type="submit" name="search" class="btn btn-success" value="Search"/>
+                            </div>
+                   </div>                    
+            </form>           
+    </div>
+
+    <?php
+    if (isset($_POST['search'])){
+                include('config.php');
+
+                echo"
+                <div>
+                <table border='1'>
+                <thead>
+                <th>Enroll No</th>
+                <th>Name</th>
+                <th>Department</th>
+                <th>Course</th>
+                <th>Father Name</th>
+                <th>Applied On</th>
+                <th>Status</th>
+                </thead>
+                <tbody>
+                </div>";
+
+                $enrollNo=$_POST['enrollNo'];
+
+                  //MySQLi Object-oriented
+                  $sql=$conn->query("SELECT 
+                                        enrollNo, 
+                                        firstName, 
+                                        lastName, 
+                                        department, 
+                                        courseName, 
+                                        fatherName,  
+                                        appliedOn, 
+                                        isApproved 
+                                        FROM student_user WHERE enrollno= '$enrollNo'");
+
+                    while($row = $sql->fetch_array()){
+
+                        $status;
+                        if($row['isApproved']==1){
+                            $status='Approved';
+                        }elseif($row['isApproved']==2){
+                            $status='Rejected';
+                        }elseif($row['isApproved']==0){
+                            $status='Pending';
+                        }else{
+                            $status='Unknown';
+                        }
+                    ?>
+                    <tr>
+                    
+                 
+                   
+                    <td><?php echo $row['enrollNo']?></td>                    
+                    <td><?php echo $row['firstName']; echo " "; echo $row['lastName']?></td>
+                    <td><?php echo $row['department']?></td>
+                    <td><?php echo $row['courseName']?></td>                  
+                    <td><?php echo $row['fatherName']?></td>
+                    <td><?php echo $row['appliedOn']?></td>
+                    <td><?php echo $status ?></td>
+                    
+                    </tr>
+                    <?php 
+                    }
+
+    }
+    ?>
+
+                <!-- ////////////////////////////// Search Part ends /////////////////////// -->
+
+
+
 </body>
 </html>
