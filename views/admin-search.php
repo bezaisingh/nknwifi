@@ -1,3 +1,19 @@
+<?php
+
+// turn on error reporting
+  error_reporting(1);
+  ini_set('error_reporting', E_ALL);
+
+// start session
+session_start();
+
+if ($_SESSION["uid"] == null){
+
+    header("location:../index.html");
+  }
+
+?>
+
 <html>
 <head>
 <title>NKN Wifi</title>
@@ -13,7 +29,7 @@
   <!-- <a href="#news">News</a>
   <a href="#contact">Contact</a>
   <a href="#about">About</a> -->
-  <a style="float:right" href="admin.html">Admin Login</a> 
+  <a style="float:right" href="../api/logout.php">Logout</a>
 </div>
  <!-- Navigation bar for navstyle2.css ends here -->
            
@@ -57,7 +73,7 @@
 
                 echo"
                 <div>
-                <table border='1'>
+                <table border='1' id='tbl_detail'>
                 <thead>
                 <th>Enroll No</th>
                 <th>Name</th>
@@ -68,6 +84,7 @@
                 <th>Mobile No</th>
                 <th>Applied On</th>
                 <th>Status</th>
+                <th>Action</th>
                 </thead>
                 <tbody>
                 </div>";
@@ -114,7 +131,13 @@
                     <td><?php echo $row['mobNo']?></td>
                     <td><?php echo $row['appliedOn']?></td>
                     <td><?php echo $status ?></td>
-                    
+                    <?php 
+                        if($row['isApproved']==0){
+                            echo "<td><a href = '../api/approve-search.php?enrollNo=$row[enrollNo]'>Approve</td>";
+                        }else{
+                            echo "<td>NA</td>";
+                        }
+                    ?>                              
                     </tr>
                     <?php 
                     }
@@ -136,6 +159,7 @@
         <th>Father Name</th>
         <th>Applied On</th>
         <th>Status</th>
+        <th>Action</th>
         </thead>
         <tbody>
         </div>";
@@ -178,6 +202,14 @@
             <td><?php echo $row['fatherName']?></td>
             <td><?php echo $row['appliedOn']?></td>
             <td><?php echo $status ?></td>
+
+            <?php 
+                        if($row['isApproved']==0){
+                            echo "<td><a href = '../api/approve-search.php?staffId=$row[staffId]'>Approve</td>";
+                        }else{
+                            echo "<td>NA</td>";
+                        }
+                    ?>
             
             </tr>
             <?php 
@@ -191,6 +223,7 @@
         </div>
 
 </body>
+
 </html>
 
 

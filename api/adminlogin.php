@@ -16,10 +16,10 @@
 				echo $accessLevel;
 					if ($accessLevel==1){
 						// echo "Access level: '$accessLevel'";
-						header("location:../views/admin-home.html");
+						header("location:../views/admin-home.php");
 
 					}else{
-						header("location:../views/admin-home.html");
+						header("location:../views/admin-home.php");
 					}  
 			}		           
         

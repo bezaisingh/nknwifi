@@ -1,3 +1,29 @@
+<?php
+
+// turn on error reporting
+  // error_reporting(1);
+  // ini_set('error_reporting', E_ALL);
+
+// start session
+session_start();
+
+if ($_SESSION["uid"] == null){
+
+    header("location:../index.html");
+  }
+
+// debug session
+// var_dump($_SESSION);
+// echo '<br>';
+// echo $_SESSION["meter_no"];
+
+//The below codes just prints the session values
+// echo '<br>';
+// print_r($_SESSION);
+// echo '<br>';
+// echo("{$_SESSION['meter_no']}"."<br />");
+
+?>
 
 <!DOCTYPE html>
 <html>
@@ -21,6 +47,11 @@
             <img src="../resources/logo.png" alt="Varsity Logo">  
             <h2 align="center">NKN-Internet Access Registered Applicants</h2>
           </div>
+
+          <div align='right'>
+            <button class='less-space' style='margin-right: 20px;' onclick="location.href='admin-search.php'">Check Application Status</button>
+          </div>
+
 
 <div class='center-container'>
   <div class="center-content">    
