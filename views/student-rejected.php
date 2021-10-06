@@ -61,7 +61,7 @@ if ($_SESSION["uid"] == null){
 <th>Sl No</th>
 <th>Id</th>
 <th>Campus</th>
-<th>Enroll No</th>
+<th>Enroll No/ID No</th>
 <th>Name</th>
 <th>Department</th>
 <th>Course</th>

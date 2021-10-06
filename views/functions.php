@@ -37,7 +37,7 @@ $to=$_POST['export-to'];
     // $result = mysqli_query($conn, $query);  
 
     if(empty($from) || empty($to) ){
-                    $sql="SELECT ROW_NUMBER() OVER (ORDER BY id DESC) AS SrNo,
+                    $sql="SELECT (@cnt := IF(@cnt IS NULL, 0,  @cnt) + 1) AS SrNo,
                     id,
                     campus,
                     staffId,
@@ -64,7 +64,7 @@ $to=$_POST['export-to'];
                 }  
                 fclose($output);  
     }else{
-                $sql="SELECT ROW_NUMBER() OVER (ORDER BY id DESC) AS SrNo,
+                $sql="SELECT (@cnt := IF(@cnt IS NULL, 0,  @cnt) + 1) AS SrNo,
                 id,
                 campus,
                 staffId,
@@ -109,7 +109,7 @@ $to=$_POST['export-to'];
     fputcsv($output, array('Sr No',
                                 'ID', 
                                 'Campus', 
-                                'Enroll No', 
+                                'Enroll No/ID No', 
                                 'First Name', 
                                 'Last Name', 
                                 'Father Name', 
@@ -129,7 +129,7 @@ $to=$_POST['export-to'];
     // $result = mysqli_query($conn, $query);  
 
     if(empty($from) || empty($to) ){
-                    $sql="SELECT ROW_NUMBER() OVER (ORDER BY id DESC) AS SrNo,
+                    $sql="SELECT (@cnt := IF(@cnt IS NULL, 0,  @cnt) + 1) AS SrNo,
                     id,
                     campus,
                     enrollNo,
@@ -158,7 +158,7 @@ $to=$_POST['export-to'];
             fclose($output); 
                 }  
                 else{
-                    $sql="SELECT ROW_NUMBER() OVER (ORDER BY id DESC) AS SrNo,
+                    $sql="SELECT (@cnt := IF(@cnt IS NULL, 0,  @cnt) + 1) AS SrNo,
                     id,
                     campus,
                     enrollNo,
