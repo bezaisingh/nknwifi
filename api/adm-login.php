@@ -16,10 +16,10 @@
 				echo $accessLevel;
 					if ($accessLevel==1){
 						// echo "Access level: '$accessLevel'";
-						header("location:../views/admin-home.php");
+						header("location:../views/adm-home.php");
 
 					}else{
-						header("location:../views/admin-home.php");
+						header("location:../views/adm-home.php");
 					}  
 			}		           
         
@@ -27,7 +27,7 @@
                 
              echo   '<script type="text/javascript"> 
                         alert("Wrong Credentials.. Try again!!!"); 
-                        window.location.href = "../views/admin.html";
+                        window.location.href = "../views/adm.html";
                         </script>';
 			
 				mysqli_close($conn);

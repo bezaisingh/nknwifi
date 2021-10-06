@@ -21,7 +21,7 @@ if(isset($_GET["enrollNo"])){
                     /*For popup window and to redirect to xxxx page*/
                     echo   '<script type="text/javascript"> 
                     alert("Approved!!!"); 
-                    window.location.href ="../views/admin-search.php";
+                    window.location.href ="../views/adm-search.php";
                     </script>';
                     // window.location.href ="javascript:history.back(1)";
                         
@@ -50,7 +50,7 @@ if(isset($_GET["staffId"])){
                 /*For popup window and to redirect to xxxx page*/
                 echo   '<script type="text/javascript"> 
                 alert("Approved!!!"); 
-                window.location.href ="../views/admin-search.php";
+                window.location.href ="../views/adm-search.php";
                 </script>';
                 // window.location.href ="javascript:history.back(1)";
                     

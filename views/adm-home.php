@@ -49,7 +49,7 @@ if ($_SESSION["uid"] == null){
           </div>
 
           <div align='right'>
-            <button class='less-space' style='margin-right: 20px;' onclick="location.href='admin-search.php'">Check Application Status</button>
+            <button class='less-space' style='margin-right: 20px;' onclick="location.href='adm-search.php'">Check Application Status</button>
           </div>
 
 
