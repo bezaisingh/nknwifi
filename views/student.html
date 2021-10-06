@@ -81,13 +81,13 @@
         <input type="text" name="course" required> 
         <br><br>
         <label for="">Semester/Year</label>                  
-        <input type="number" name="semester" > 
+        <input  type="number" name="semester" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==1) return false;"  /> 
         <br><br>
         <label for="">Expected Date/Year of completion:</label>                  
-        <input type="text" name="yearOfCompletion" required>  
+        <input type="date" name="yearOfCompletion" required>  
         <br><br>
         <label for="">Hostel No</label>                  
-        <input type="number" name="hostelNo" placeholder="For Hostellers only" > 
+        <input type="number" name="hostelNo" placeholder="For Hostellers only" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==2) return false;" /> 
         <!-- <label class="redText" for="">For Hostellers only</label> -->
         <br>
         <p class="redText">Note: Only jpg, jpeg, png format is allowed, Only University ID Card will be Accepted </p>
