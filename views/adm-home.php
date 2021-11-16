@@ -35,7 +35,7 @@ if ($_SESSION["uid"] == null){
 <body align>
     <!-- Navigation bar for navstyle2.css -->
 <div class="topnav">
-  <a class="active" href="index.html">Home</a>
+  <a class="active" href="adm-home.php">Home</a>
   <!-- <a href="#news">News</a>
   <a href="#contact">Contact</a>
   <a href="#about">About</a> -->
@@ -55,13 +55,13 @@ if ($_SESSION["uid"] == null){
 
 <div class='center-container'>
   <div class="center-content">    
-    <button style="width: 300px;" onclick="location.href='student-pending.php'">For Students</button> 
+    <button style="width: 300px;" onclick="location.href='student-pending.php'">Students</button> 
 </div>
 
     <br><br>
 
 <div class="center-content">
-    <button style="width: 300px;" onclick="location.href='staff-pending.php'">For Teaching / Non Teaching Staff Members</button>
+    <button style="width: 300px;" onclick="location.href='staff-pending.php'">Teaching / Non Teaching Staff Members</button>
 </div>
 </div>
     
