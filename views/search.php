@@ -13,7 +13,7 @@
   <!-- <a href="#news">News</a>
   <a href="#contact">Contact</a>
   <a href="#about">About</a> -->
-  <a style="float:right" href="admin.html">Admin Login</a> 
+  <a style="float:right" href="adm.html">Admin Login</a> 
 </div>
  <!-- Navigation bar for navstyle2.css ends here -->
            

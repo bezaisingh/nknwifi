@@ -28,7 +28,7 @@ if ($_SESSION["uid"] == null){
 <html>
  <title>Rejected Applicants</title>
 <div class="topnav">
-<a href="admin-home.php">Home</a>
+<a href="adm-home.php">Home</a>
   <a href="staff-approved.php">Approved</a>
   <a class="active" href="staff-rejected.php">Rejected</a>
   <a href="staff-pending.php">Pending</a>
@@ -88,7 +88,7 @@ include "../api/dbConfig.php";
 //$meter_no= $_SESSION["meter_no"];
     // echo '<br>';
     
-    $sql = "SELECT *, ROW_NUMBER() OVER (ORDER BY id DESC) AS SrNo FROM `staff_user` JOIN data_uploads WHERE 
+    $sql = "SELECT *, (@cnt := IF(@cnt IS NULL, 0,  @cnt) + 1) AS SrNo FROM `staff_user` JOIN data_uploads WHERE 
     staff_user.staffId = data_uploads.enrollNo  AND isApproved =2";
 
 // $sql= "SELECT * FROM student_user";

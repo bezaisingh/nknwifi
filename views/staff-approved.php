@@ -28,7 +28,7 @@ if ($_SESSION["uid"] == null){
 <html>
  <title>Approved Staff</title>
 <div class="topnav">
-  <a href="admin-home.php">Home</a>
+  <a href="adm-home.php">Home</a>
   <a class="active" href="staff-approved.php">Approved</a>
   <a href="staff-rejected.php">Rejected</a>
   <a href="staff-pending.php">Pending</a>
@@ -93,7 +93,7 @@ if (isset($_POST['submit'])){
   $from=date('Y-m-d',strtotime($_POST['from']));
   $to=date('Y-m-d',strtotime($_POST['to']));
 
-  $sql = "SELECT *, ROW_NUMBER() OVER (ORDER BY id DESC) AS SrNo FROM `staff_user` JOIN data_uploads WHERE 
+  $sql = "SELECT *, (@cnt := IF(@cnt IS NULL, 0,  @cnt) + 1) AS SrNo FROM `staff_user` JOIN data_uploads WHERE 
     staff_user.staffId = data_uploads.enrollNo  AND approvedOn BETWEEN '$from' AND '$to'";
 
 $result = $conn->query($sql);
@@ -128,7 +128,7 @@ echo "</table>";
 } else { echo "0 results"; }
 $conn->close();
 }else{
-        $sql = "SELECT *, ROW_NUMBER() OVER (ORDER BY id DESC) AS SrNo FROM `staff_user` JOIN data_uploads WHERE 
+        $sql = "SELECT *, (@cnt := IF(@cnt IS NULL, 0,  @cnt) + 1) AS SrNo FROM `staff_user` JOIN data_uploads WHERE 
         staff_user.staffId = data_uploads.enrollNo  AND isApproved =1";
 
         
