@@ -86,8 +86,13 @@ include "../api/dbConfig.php";
     // echo '<br>';
     
 
-    $sql = "SELECT *, (@cnt := IF(@cnt IS NULL, 0,  @cnt) + 1) AS SrNo FROM `student_user` JOIN data_uploads WHERE 
-    student_user.enrollNo = data_uploads.enrollNo  AND isApproved =2";
+    // $sql = "SELECT *, (@cnt := IF(@cnt IS NULL, 0,  @cnt) + 1) AS SrNo FROM `student_user` JOIN data_uploads WHERE 
+    // student_user.enrollNo = data_uploads.enrollNo  AND isApproved =2";
+
+//NOTE:  isApproved Rejected =2, Approved=1, Pending=0
+    $sql ="SELECT *, @ab:=@ab+1 AS SrNo FROM student_user, (SELECT @ab:= 0)
+    AS ab  JOIN data_uploads 
+    WHERE student_user.enrollNo = data_uploads.enrollNo  AND isApproved =2";
 
 // $sql= "SELECT * FROM student_user";
     

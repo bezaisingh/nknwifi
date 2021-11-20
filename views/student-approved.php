@@ -55,17 +55,34 @@ if ($_SESSION["uid"] == null){
       <a href="printBillList.php">Print Pdf</a>
     </div> -->
 
+    <div id="block_container">
+        <div id="bloc1">
+        <form method="POST">
+          <label class='less-space'>From: </label><input class='less-space' type="date" name="from">
+          <label class='less-space'>To: </label><input class='less-space' type="date" name="to">
+          <input class='less-space' style='margin-right: 20px; width: 110px;' type="submit" value="Get Data" name="submit">
+      </form>
+        </div>
+
+        <div id="bloc2">
+                          <!-- ////////////////////////////// Export Part Starts /////////////////////// -->
+                          
+            <form class="form-horizontal" action="functions.php" method="post" name="upload_excel"   
+                      enctype="multipart/form-data">
+                  <div class="form-group">
+                            <div class="col-md-4 col-md-offset-4">
+                            <label class='less-space'>From </label><input class='less-space' type="date" name="export-from">
+                            <label class='less-space'>To </label><input class='less-space' type="date" name="export-to">
+                            <input class='less-space' style='margin-right: 20px; width: 110px;' type="submit" name="Export-Approved-Students" class="btn btn-success" value="Export to Excel"/>
+                            </div>
+                   </div>                    
+            </form>           
+                  <!-- ////////////////////////////// Export Part Ends /////////////////////// -->
+        </div>
+    </div>
 
 
   <div class='applicants-table'>
-
-    <div align= 'right'>
-    <form method="POST">
-        <label class='less-space'>From: </label><input class='less-space' type="date" name="from">
-        <label class='less-space'>To: </label><input class='less-space' type="date" name="to">
-        <input class='less-space' style='margin-right: 20px; width: 110px;' type="submit" value="Get Data" name="submit">
-    </form>
-</div>
 
   <table>
 <tr>
@@ -132,8 +149,12 @@ echo "</table>";
 $conn->close();
 }else{
 
-   $sql = "SELECT *, (@cnt := IF(@cnt IS NULL, 0,  @cnt) + 1) AS SrNo FROM `student_user` JOIN data_uploads WHERE 
-          student_user.enrollNo = data_uploads.enrollNo  AND isApproved =1";
+  //  $sql = "SELECT *, (@cnt := IF(@cnt IS NULL, 0,  @cnt) + 1) AS SrNo FROM `student_user` JOIN data_uploads WHERE 
+  //         student_user.enrollNo = data_uploads.enrollNo  AND isApproved =1 ORDER BY id DESC"; // Commented on 20-11-2021
+
+          $sql ="SELECT *, @ab:=@ab+1 AS SrNo FROM student_user, (SELECT @ab:= 0)
+                 AS ab  JOIN data_uploads 
+                 WHERE student_user.enrollNo = data_uploads.enrollNo  AND isApproved =1";
 
     $result = $conn->query($sql);   
   
@@ -173,21 +194,6 @@ $conn->close();
 ?>
 </table>
   </div>
-
-                <!-- ////////////////////////////// Export Part Starts /////////////////////// -->
-                <div align= 'right'>
-            <form class="form-horizontal" action="functions.php" method="post" name="upload_excel"   
-                      enctype="multipart/form-data">
-                  <div class="form-group">
-                            <div class="col-md-4 col-md-offset-4">
-                            <label class='less-space'>From </label><input class='less-space' type="date" name="export-from">
-                            <label class='less-space'>To </label><input class='less-space' type="date" name="export-to">
-                            <input class='less-space' style='margin-right: 20px; width: 110px;' type="submit" name="Export-Approved-Students" class="btn btn-success" value="Export to Excel"/>
-                            </div>
-                   </div>                    
-            </form>           
-    </div>
-                  <!-- ////////////////////////////// Export Part Ends /////////////////////// -->
 
     <!-- The Modal -->
 <div id="myModal" class="modal">

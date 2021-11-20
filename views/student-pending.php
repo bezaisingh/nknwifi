@@ -93,8 +93,12 @@ include "../api/dbConfig.php";
     // $sql="  SELECT *, (@cnt := IF(@cnt IS NULL, 0,  @cnt) + 1) AS SrNo FROM `student_user` JOIN data_uploads WHERE 
     // student_user.enrollNo = data_uploads.enrollNo  AND isApproved =0   ";
 
-$sql="  SELECT *, ROW_NUMBER() OVER(ORDER BY (SELECT 1)) AS SrNo FROM `student_user` JOIN data_uploads WHERE 
-student_user.enrollNo = data_uploads.enrollNo  AND isApproved =0   ";
+// $sql="  SELECT *, ROW_NUMBER() OVER(ORDER BY (SELECT 1)) AS SrNo FROM `student_user` JOIN data_uploads WHERE 
+// student_user.enrollNo = data_uploads.enrollNo  AND isApproved =0   "; //Commented on 20-11-2021
+
+    $sql ="SELECT *, @ab:=@ab+1 AS SrNo FROM student_user, (SELECT @ab:= 0)
+    AS ab  JOIN data_uploads 
+    WHERE student_user.enrollNo = data_uploads.enrollNo  AND isApproved =0";
 
 // $sql= "SELECT * FROM student_user";
     

@@ -215,4 +215,16 @@ label {
 }
 
 
-      
+      /* For two div in one line starts */
+#block_container {
+  /* display: flex; */
+width: 100%;
+
+}
+#bloc1 {
+  float: left
+}
+#bloc2 {
+  float: right
+}
+      /* For two div in one line Ends */

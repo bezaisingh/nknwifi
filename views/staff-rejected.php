@@ -88,8 +88,12 @@ include "../api/dbConfig.php";
 //$meter_no= $_SESSION["meter_no"];
     // echo '<br>';
     
-    $sql = "SELECT *, (@cnt := IF(@cnt IS NULL, 0,  @cnt) + 1) AS SrNo FROM `staff_user` JOIN data_uploads WHERE 
-    staff_user.staffId = data_uploads.enrollNo  AND isApproved =2";
+    // $sql = "SELECT *, (@cnt := IF(@cnt IS NULL, 0,  @cnt) + 1) AS SrNo FROM `staff_user` JOIN data_uploads WHERE 
+    // staff_user.staffId = data_uploads.enrollNo  AND isApproved =2"; //Commented on 20-11-2021
+
+    $sql = "SELECT *, @ab:=@ab+1 AS SrNo FROM staff_user, (SELECT @ab:= 0)
+    AS ab JOIN data_uploads 
+    WHERE staff_user.staffId = data_uploads.enrollNo  AND isApproved =2"; 
 
 // $sql= "SELECT * FROM student_user";
     
