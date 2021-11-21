@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>
+	Show and Hide div elements using radio buttons
+	</title>
+
+    <script src="../js/functions.js"></script>
+	<!-- <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script> -->
+    <script src="../js/jquery-1.12.4.min.js"></script>
+       
+</head>
+
+<body>
+	<center>
+	
+		<h3>
+		Show and Hide div elements using radio buttons
+		</h3>
+
+    <label width=20px for="">Staff Type</label>  
+    <!-- Below value is set yes / no for isPermanent column in the table -->
+
+    <!-- to call the hide funtion by default the below javascript funtion is called -->
+        <script type="text/javascript">hideshow_contractual();</script> 
+
+        <input class="radio" type="radio" id="Permanent" name="staff_type" value="YES" onclick ="hideshow_contractual()" checked>
+        <label class="radio" for="Permanent">Permanent</label>
+
+        <input class="radio" width=20px type="radio" id="Contractual" name="staff_type" value="NO" onclick ="hideshow_contractual()">
+        <label style="width: 100px;" class="radio" for="Contractual">Contractual</label>
+
+        <div id='NO' class='contractualll'>
+            <label for="apointmentLeter">Appointment Letter:</label>
+            <input type='file' id="apntLetter" name='apntLetter' required> 
+            <label class="redText" for="">File size should not exceed 300kb</label>
+            <br><br>
+        </div>
+
+    <!-- <script type="text/javascript">
+        $(document).ready(function() {
+            $("div.contractualll").hide();
+            $('input[name$="staff_type"]').click(function() {
+
+                var staffType = $(this).val();
+                $("div.contractualll").hide();
+                $("#" + staffType).show();               
+            });
+        });
+    </script> -->
+
+
+    <html xmlns="http://www.w3.org/1999/xhtml">
+        <head id="Head1" runat="server">
+            <title></title>
+
+            <script type="text/javascript">
+                function blockSpecialChar(e) {
+                    var k = e.keyCode;
+                    return ((k > 64 && k < 91) || (k > 96 && k < 123) || k == 8   || (k >= 48 && k <= 57));
+                }
+            </script>
+        </head>
+        <body>
+            <form id="frm" runat="server">
+              <input type="text" name="name"  onkeypress="return blockSpecialChar(event)"/>
+            </form>
+        </body>
+        </html>
+
+
+
+
+
+
+        <br><br>
+        <html>
+   <head>
+      <script type="text/javascript">
+         function checkSpcialChar(event){
+            if(!((event.keyCode >= 65) && (event.keyCode <= 90) || 
+                 (event.keyCode >= 97) && (event.keyCode <= 122) ||                  
+                 (event.keyCode > 31)  && (event.keyCode < 33) )){
+               event.returnValue = false;
+               return;
+            }
+            event.returnValue = true;
+         }
+      </script>
+   </head>
+   <body>
+      <form id="form1">
+        <div>
+            <input type="text" name="txtInput" id="txtInput" value="" onkeypress="return checkSpcialChar(event)">
+        </div>
+     </form>
+   </body>
+</html>
+
+<br><br>
+
+
+<!DOCTYPE html>
+<html>
+
+<head></head>
+
+<body>
+	<form name="htmltest">
+		<!--Here, by default we have tried
+			to implement a file path using
+			the value attribute. But it
+			will not work here. -->
+		<input type="file" value="c:/amrit.txt">
+	</form>
+</body>
+
+</html>
+<!--We can implement the submit
+	button using javascript. -->
+<!--script>document.htmltest.submit();</script-->
+
+
+</center>
+
+</body>
+
+</html>

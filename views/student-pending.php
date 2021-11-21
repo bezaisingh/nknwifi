@@ -58,8 +58,8 @@ if ($_SESSION["uid"] == null){
   <div class='applicants-table'>
   <table>
 <tr>
-<th>Sl No</th>
-<th>Id</th>
+<th>Sl/No</th>
+
 <th>Campus</th>
 <th>Enroll No/ID No</th>
 <th>Name</th>
@@ -112,7 +112,7 @@ if($result !== false && $result->num_rows > 0)
 while($row = $result->fetch_assoc()) {
 echo "<tr>
             <td>" . $row["SrNo"] . "</td>
-            <td>" . $row["id"] . "</td>
+
             <td>" . $row["campus"] . "</td>
             <td>" . $row["enrollNo"]. "</td>
             <td>" . $row["firstName"] .' ' .$row["lastName"]."</td>
@@ -126,8 +126,8 @@ echo "<tr>
             <td><image id='myImg' onClick='myFunc(this)' alt='ID Front' class='table_image' src='".$row['IdFront']."'>
             <td><image id='myImg' onClick='myFunc(this)' alt='ID Back' class='table_image' src='".$row['IdBack']."'>
             <td><image id='myImg' onClick='myFunc(this)' alt='Photo' class='table_image' src='".$row['Photo']."'>
-            <td><a href = '../api/approve.php?enrollNo=$row[enrollNo]'>Approve</td>
-            <td><a href = '../api/reject.php?enrollNo=$row[enrollNo]'>Reject</td>
+            <td><a href = '../api/approve.php?enrollNo=$row[enrollNo]'><img class='actionBtn' src='../resources/approve.png'></td>
+            <td><a href = '../api/reject.php?enrollNo=$row[enrollNo]'><img class='actionBtn' src='../resources/reject.png'></td>
 
 
                     

@@ -228,3 +228,10 @@ width: 100%;
   float: right
 }
       /* For two div in one line Ends */
+
+      .actionBtn{
+        padding: 2px 2px 2px 2px;
+        box-align:center;
+        width: 25px;
+        height: 25px; 
+      }

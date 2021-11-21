@@ -163,4 +163,25 @@ function callMultiFunctioins() {
   net_Pay_Amt();
 }
 
+function hideshow_contractual(){
+  $(document).ready(function() {
+    $("div.contractualll").hide();
+    $('input[name$="staff_type"]').click(function() {
 
+        var staffType = $(this).val();
+        $("div.contractualll").hide();
+        $("#" + staffType).show();               
+    });
+});
+}
+
+//Block Special Characters
+function checkSpcialChar(event){
+  if(!((event.keyCode >= 65) && (event.keyCode <= 90) || 
+       (event.keyCode >= 97) && (event.keyCode <= 122) ||                  
+       (event.keyCode > 31)  && (event.keyCode < 33) )){
+     event.returnValue = false;
+     return;
+  }
+  event.returnValue = true;
+}

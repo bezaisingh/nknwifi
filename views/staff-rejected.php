@@ -58,13 +58,13 @@ if ($_SESSION["uid"] == null){
   <div class='applicants-table'>
   <table>
 <tr>
-<th>Serial no</th>
-    <th>Id</th>
+<th>Sl/no</th>
+
     <th>Campus</th>
     <th>Staff ID</th>
     <th>Name</th>
     <!-- <th>Father</th> -->
-    <th>Gender</th>
+    <th>Sex</th>
     <!-- <th>DOB</th> -->
     <th>Address</th>
     <th>Department</th>
@@ -73,6 +73,7 @@ if ($_SESSION["uid"] == null){
     <th>Phone</th>
     <th>Is Permanent?</th>
     <th>Contract ends on</th>
+    <th>Appointment Letter</th>
     <th>ID Front</th>
     <th>ID Back</th>
     <th>Photo</th>
@@ -92,8 +93,8 @@ include "../api/dbConfig.php";
     // staff_user.staffId = data_uploads.enrollNo  AND isApproved =2"; //Commented on 20-11-2021
 
     $sql = "SELECT *, @ab:=@ab+1 AS SrNo FROM staff_user, (SELECT @ab:= 0)
-    AS ab JOIN data_uploads 
-    WHERE staff_user.staffId = data_uploads.enrollNo  AND isApproved =2"; 
+            AS ab JOIN data_uploads 
+            WHERE staff_user.staffId = data_uploads.enrollNo  AND isApproved =2"; 
 
 // $sql= "SELECT * FROM student_user";
     
@@ -107,7 +108,7 @@ if($result !== false && $result->num_rows > 0)
 while($row = $result->fetch_assoc()) {
 echo "<tr>
             <td>" . $row["SrNo"] . "</td>
-            <td>" . $row["id"] . "</td>
+
             <td>" . $row["campus"] . "</td>
             <td>" . $row["staffId"]. "</td>
             <td>" . $row["firstName"] .' ' .$row["lastName"]."</td>
@@ -119,10 +120,12 @@ echo "<tr>
             <td>" . $row["mobNo"] . "</td>
             <td>" . $row["isPermanent"]. "</td>
             <td>" . $row["contractEndDate"] . "</td>
+
+            <td><image id='myImg' onClick='myFunc(this)' alt='Appointment Letter' class='table_image' src='".$row['ApntLetter']."'>
             <td><image id='myImg' onClick='myFunc(this)' alt='ID Front' class='table_image' src='".$row['IdFront']."'>
             <td><image id='myImg' onClick='myFunc(this)' alt='ID Back' class='table_image' src='".$row['IdBack']."'>
             <td><image id='myImg' onClick='myFunc(this)' alt='Photo' class='table_image' src='".$row['Photo']."'>
-            <td><a href = '../api/approve-staff.php?staffId=$row[staffId]'>Approve</td>
+            <td><a href = '../api/approve-staff.php?staffId=$row[staffId]'><img class='actionBtn' src='../resources/approve.png'></td>
 
 
 

@@ -40,13 +40,13 @@
 <input type="text" name="enroll" required>
 <br><br>
         <label width=20px for="">First Name</label>          
-        <input type="text" name="fname" required>
+        <input type="text" name="fname" onkeypress="return checkSpcialChar(event)" required>
         <br><br>
         <label for="">Last Name</label>          
-        <input type="text" name="lname" required>
+        <input type="text" name="lname" onkeypress="return checkSpcialChar(event)" required>
         <br><br>
         <label for="">Father's Name</label>          
-        <input type="text" name="father" required>
+        <input type="text" name="father" onkeypress="return checkSpcialChar(event)" required>
         <br><br>
 <!-- ____________________________________ Gender Start _____________________________________________________ -->
         <label width=20px for="">Gender</label>  
@@ -104,6 +104,7 @@
         <input type='file' id="dp" name="pp" required> 
         
         <br><br>
+        <HR> 
 <H4>Terms and Conditions</H4>
 <ul>
   <li>For authentication the User ID & Password will be given only through the given Email address.</li>

@@ -58,8 +58,8 @@ if ($_SESSION["uid"] == null){
   <div class='applicants-table'>
   <table>
 <tr>
-    <th>Serial no</th>
-    <th>Id</th>
+    <th>Sl/no</th>
+    <!-- <th>Id</th> -->
     <th>Campus</th>
     <th>Staff ID</th>
     <th>Name</th>
@@ -73,6 +73,7 @@ if ($_SESSION["uid"] == null){
     <th>Phone</th>
     <th>Is Permanent?</th>
     <th>Contract ends on</th>
+    <th>Appointment Letter</th>
     <th>ID Front</th>
     <th>ID Back</th>
     <th>Photo</th>
@@ -113,7 +114,7 @@ if($result !== false && $result->num_rows > 0)
 while($row = $result->fetch_assoc()) {
 echo "<tr>
           <td>" . $row["SrNo"] . "</td>
-          <td>" . $row["id"] . "</td>
+
           <td>" . $row["campus"] . "</td>
           <td>" . $row["staffId"]. "</td>
           <td>" . $row["firstName"] .' ' .$row["lastName"]."</td>
@@ -127,11 +128,14 @@ echo "<tr>
           <td>" . $row["mobNo"] . "</td>
           <td>" . $row["isPermanent"]. "</td>
           <td>" . $row["contractEndDate"] . "</td>
+
+          <td><image id='myImg' onClick='myFunc(this)' alt='Appointment Letter' class='table_image' src='".$row['ApntLetter']."'>
+
           <td><image id='myImg' onClick='myFunc(this)' alt='ID Front' class='table_image' src='".$row['IdFront']."'>
           <td><image id='myImg' onClick='myFunc(this)' alt='ID Back' class='table_image' src='".$row['IdBack']."'>
           <td><image id='myImg' onClick='myFunc(this)' alt='Photo' class='table_image' src='".$row['Photo']."'>
-          <td><a href = '../api/approve-staff.php?staffId=$row[staffId]'>Approve</td>
-          <td><a href = '../api/reject-staff.php?staffId=$row[staffId]'>Reject</td>
+          <td><a href = '../api/approve-staff.php?staffId=$row[staffId]'><img class='actionBtn' src='../resources/approve.png'></td>
+          <td><a href = '../api/reject-staff.php?staffId=$row[staffId]'><img class='actionBtn' src='../resources/reject.png'></td>
                   
                     
       </tr>";

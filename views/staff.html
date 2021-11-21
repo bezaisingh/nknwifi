@@ -2,9 +2,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>NKN Wifi</title>
+  <title>NKN Wifi</title>
+
     <link rel="shortcut icon" href="../resources/favicon.ico">
     <link rel="stylesheet" type="text/css" href="../css/navbar.css">
+    <script text="text/javascript" src="../js/functions.js"></script>
+    <script src="../js/jquery-1.12.4.min.js"></script>
+
 </head>
 <body>
     <!-- Navigation bar for navstyle2.css -->
@@ -41,14 +45,14 @@
         <br><br>
 
         <label width=20px for="">First Name</label>          
-        <input type="text" name="staff_fname" required>
+        <input type="text" name="staff_fname" onkeypress="return checkSpcialChar(event)" required>
         <br><br>
         <label for="">Last Name</label>          
-        <input type="text" name="staff_lname" required>
+        <input type="text" name="staff_lname" onkeypress="return checkSpcialChar(event)" required>
         <br><br>
 
         <label for="">Father's Name</label>          
-        <input type="text" name="staff_father" required>
+        <input type="text" name="staff_father" onkeypress="return checkSpcialChar(event)" required>
         <br><br>
 <!-- ____________________________________ Gender Start _____________________________________________________ -->
         <label width=20px for="">Gender</label>  
@@ -84,13 +88,28 @@
         <input type="text" name="staff_desig" required> 
         <br><br>
         <!-- ___________________________________________Radio Button Starts____________________________________________ -->
+        
         <label width=20px for="">Staff Type</label>  
-<!-- Below value is set yes / no for isPermanent column in the table -->
-<input class="radio" width=20px type="radio" id="Contractual" name="staff_type" value="NO" checked>
-<label style="width: 100px;" class="radio" for="Contractual">Contractual</label>
+        <!-- Below value is set yes / no for isPermanent column in the table -->
 
-<input class="radio" type="radio" id="Permanent" name="staff_type" value="YES">
-<label class="radio" for="Permanent">Permanent</label>
+        <!-- to call the hide funtion by default the below javascript funtion is called -->
+        <script type="text/javascript">hideshow_contractual();</script> 
+
+        <input class="radio" type="radio" id="Permanent" name="staff_type" value="YES" onclick ="hideshow_contractual()" checked>
+        <label style="width: 100px;" class="radio" for="Permanent">Permanent</label>
+
+        <input class="radio" width=20px type="radio" id="Contractual" name="staff_type" value="NO" onclick ="hideshow_contractual()">
+        <label style="width: 100px;" class="radio" for="Contractual">Contractual</label>
+
+        <div id='NO' class='contractualll'>
+          <br>
+            <label for="apointmentLeter">Appointment Letter:</label>
+            <input type='file' id="apntLetter" name='apntLetter'> 
+            <label class="redText" for="">File size should not exceed 300kb, Only jpg, jpeg, png format is allowed </label>
+            <br>
+            <p style="margin-bottom: 0;" class="redText"><strong>Note:</strong> Contractual Staffs must Upload Aadhar, DL, PAN or VoterID for Id proof below.</p>   
+                        
+        </div>
 
 <br><br>
         <!-- ___________________________________________Radio Button ends____________________________________________ -->
@@ -101,7 +120,7 @@
         <input type="date" name="staff_completionOfContract" >  
         <label class="redText" for="">For Contractual Only</label>
         <br>
-        <p class="redText">Note: Only jpg, jpeg, png format is allowed, Only Appointment Letter/University ID will be Accepted </p>
+        <p class="redText"><strong>Note:</strong> Only jpg, jpeg, png format is allowed, Only University ID will be Accepted for Permanent staff.</p>
         <br>
         <label for="idfront">ID Front:</label>
         <input type='file' id="idfront" name='idf' required> 
@@ -114,9 +133,9 @@
         <label for="dp">Passport Size Photo:</label>
         <input type='file' id="dp" name="pp" required> 
         <label class="redText" for="">File size should not exceed 300kb</label>
-
         
         <br><br>
+        <HR> 
 <H4>Terms and Conditions</H4>
 <ul>
   <li>For authentication the User ID & Password will be given only through the given Email address.</li>
@@ -152,7 +171,5 @@
 </div>
 
 </body>
-
-<script text="text/javascript" src="../js/functions.js"></script>
 
 </html>

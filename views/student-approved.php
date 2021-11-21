@@ -87,7 +87,6 @@ if ($_SESSION["uid"] == null){
   <table>
 <tr>
 <th>Sl No</th>
-<th>Id</th>
 <th>Campus</th>
 <th>Enroll No/ID No</th>
 <th>Name</th>
@@ -113,8 +112,9 @@ if (isset($_POST['submit'])){
   $from=date('Y-m-d',strtotime($_POST['from']));
   $to=date('Y-m-d',strtotime($_POST['to']));
 
-  $sql = "SELECT *, (@cnt := IF(@cnt IS NULL, 0,  @cnt) + 1) AS SrNo FROM `student_user` JOIN data_uploads WHERE 
-  student_user.enrollNo = data_uploads.enrollNo  AND approvedOn BETWEEN '$from' AND '$to'";                   
+  $sql = "SELECT *, @ab:=@ab+1 AS SrNo FROM student_user, (SELECT @ab:= 0)
+          AS ab JOIN data_uploads WHERE 
+          student_user.enrollNo = data_uploads.enrollNo  AND approvedOn BETWEEN '$from' AND '$to'";                   
 
   // $sql = "SELECT *, ROW_NUMBER() OVER (ORDER BY id DESC) AS SrNo FROM `student_user` JOIN data_uploads WHERE 
   // student_user.enrollNo = data_uploads.enrollNo  AND isApproved =1";
@@ -127,7 +127,7 @@ if (isset($_POST['submit'])){
     while($row = $result->fetch_assoc()) {
 echo "<tr>
             <td>" . $row["SrNo"] . "</td>
-            <td>" . $row["id"] . "</td>
+
             <td>" . $row["campus"] . "</td>
             <td>" . $row["enrollNo"]. "</td>
             <td>" . $row["firstName"] .' ' .$row["lastName"]."</td>
@@ -164,7 +164,7 @@ $conn->close();
     while($row = $result->fetch_assoc()) {
 echo "<tr>
             <td>" . $row["SrNo"] . "</td>
-            <td>" . $row["id"] . "</td>
+
             <td>" . $row["campus"] . "</td>
             <td>" . $row["enrollNo"]. "</td>
             <td>" . $row["firstName"] .' ' .$row["lastName"]."</td>

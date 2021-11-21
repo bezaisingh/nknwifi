@@ -60,12 +60,6 @@ $ppSize=$_FILES['pp']['size'];
 $ppError=$_FILES['pp']['error'];
 $ppType=$_FILES['pp']['type'];
 
-$apntLetter=$_FILES['apntLetter'];
-$apntLetterName=$_FILES['apntLetter']['name'];
-$apntLetterTmpName=$_FILES['apntLetter']['tmp_name'];
-$apntLetterSize=$_FILES['apntLetter']['size'];
-$apntLetterError=$_FILES['apntLetter']['error'];
-$apntLetterType=$_FILES['apntLetter']['type'];
 
 
 $idfExt= explode('.',$idfName);
@@ -74,23 +68,18 @@ $allowed = array("jpg","jpeg","png","gif");
 $idfNameNew= uniqid('', true).".".$idfActExt;
 $idfDestination = '../uploads/staff/'.$idfNameNew;
 
+
 $idbExt= explode('.',$idbName);
 $idbActExt= strtolower(end($idbExt));
 $idbNameNew= uniqid('', true).".".$idbActExt;
 $idbDestination = '../uploads/staff/'.$idbNameNew;
 $allowed = array("jpg","jpeg","png","gif");
 
+
 $ppExt= explode('.',$ppName);
 $ppActExt= strtolower(end($ppExt));
 $ppNameNew= uniqid('', true).".".$ppActExt;
 $ppDestination = '../uploads/staff/'.$ppNameNew;
-$allowed = array("jpg","jpeg","png","gif");
-
-
-$apntLetterExt= explode('.',$apntLetterName);
-$apntLetterActExt= strtolower(end($apntLetterExt));
-$apntLetterNameNew= uniqid('', true).".".$apntLetterActExt;
-$apntLetterDestination = '../uploads/staff/appointmentLetter/'.$apntLetterNameNew;
 $allowed = array("jpg","jpeg","png","gif");
 
 
@@ -178,13 +167,8 @@ elseif (in_array($idfActExt, $allowed)) {
                                 if (in_array($ppActExt, $allowed)) {
 
                                     if ($ppError === 0) {                            
-                                        if ($ppSize < 307200) {  
+                                        if ($ppSize < 307200) {     
                                             
-                                            // if (in_array($apntLetterActExt, $allowed)){
-                                            //     if ($apntLetterError == 0){
-                                            //         if ($apntLetterSize < 307200){
-                                                        
-                                                                 
                                             //When all there is no error in the files provided by the users then the pics will be uploaded 
                                                 //ID Front
                                             move_uploaded_file($idfTmpName,$idfDestination);
@@ -196,12 +180,9 @@ elseif (in_array($idfActExt, $allowed)) {
                                             move_uploaded_file($ppTmpName,$ppDestination);
                                             // echo "Photo Upload Success"; //commented on 21 sept 2021
 
-                                            move_uploaded_file($apntLetterTmpName,$apntLetterDestination);
-                                            // echo "Photo Upload Success"; //commented on 21 Nov 2021
-
                                             // when all files are uploaded successfully then the data will be saved in the db
-                                            $sql1="INSERT INTO data_uploads(enrollNo, IdFront, IdBack, Photo, ApntLetter) 
-                                            VALUES ('$EnrollNo', '$idfDestination','$idbDestination','$ppDestination', '$apntLetterDestination')";
+                                            $sql1="INSERT INTO data_uploads(enrollNo, IdFront, IdBack, Photo) 
+                                            VALUES ('$EnrollNo', '$idfDestination','$idbDestination','$ppDestination')";
 
                                             // to insert data in the student_user table
                                             $sql2="INSERT INTO staff_user(
@@ -268,35 +249,9 @@ elseif (in_array($idfActExt, $allowed)) {
                                   alert("Your Credentials will be mailed to you after verification of Data within few days, Kindly have patience. Thanks & Regards @ Computer Centre"); 
                                    window.location.href = "../index.html";
                                 </script>';
-
-                                                    // } else{
-                                                    //     echo   '<script type="text/javascript"> 
-                                                    //     alert("Appointment Letter File size must be less than 300kb"); 
-                                                    //     window.location.href ="javascript:history.back(1)";
-                                                    //   </script>';
-                                                      
-                                                    //     }
-
-                                                // } else {
-                        
-                                                //     echo   '<script type="text/javascript"> 
-                                                //     alert("There was an error uploading the Appointment Letter. Please try Again !"); 
-                                                //     window.location.href ="javascript:history.back(1)";
-                                                //   </script>';
-                                                //           }                                               
-
-                                            // }  else {
-                                            //     echo   '<script type="text/javascript"> 
-                                            //     alert("Wrong File type: Appointment Letter"); 
-                                            //     window.location.href ="javascript:history.back(1)";
-                                            //   </script>';   
-                                                    
-                                            //         }
-                                   
                         
                                         
                                         }
-                                        
                                             else{
                                                 echo   '<script type="text/javascript"> 
                                                 alert("Photo File size must be less than 300kb"); 
