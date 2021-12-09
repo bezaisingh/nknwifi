@@ -235,3 +235,7 @@ width: 100%;
         width: 25px;
         height: 25px; 
       }
+.small-inputbox{
+  width: 100px;
+  height: 50; 
+}
