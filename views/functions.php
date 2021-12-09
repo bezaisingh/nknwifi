@@ -37,25 +37,49 @@ $to=$_POST['export-to'];
     // $result = mysqli_query($conn, $query);  
 
     if(empty($from) || empty($to) ){
-                    $sql="SELECT (@cnt := IF(@cnt IS NULL, 0,  @cnt) + 1) AS SrNo,
-                    id,
-                    campus,
-                    staffId,
-                    firstName,
-                    lastName,
-                    fatherName,
-                    gender,
-                    email,
-                    mobNo,
-                    address,
-                    dob,
-                    department,
-                    joiningDate,
-                    isPermanent,
-                    contractEndDate,
-                    appliedOn,
-                    approvedOn             
-                FROM staff_user WHERE isApproved =1";
+
+        //Commented on 24 Nov 2021
+                //     $sql="SELECT (@cnt := IF(@cnt IS NULL, 0,  @cnt) + 1) AS SrNo,
+                //     id,
+                //     campus,
+                //     staffId,
+                //     firstName,
+                //     lastName,
+                //     fatherName,
+                //     gender,
+                //     email,
+                //     mobNo,
+                //     address,
+                //     dob,
+                //     department,
+                //     joiningDate,
+                //     isPermanent,
+                //     contractEndDate,
+                //     appliedOn,
+                //     approvedOn             
+                // FROM staff_user WHERE isApproved =1";
+
+                //Below sql query is added on 24th Nov 2021 to correct the serial no in the excel sheet. 
+                $sql="SELECT   @ab:=@ab+1 AS SrNo,   
+                            id,
+                            campus,
+                            staffId,
+                            firstName,
+                            lastName,
+                            fatherName,
+                            gender,
+                            email,
+                            mobNo,
+                            address,
+                            dob,
+                            department,
+                            joiningDate,
+                            isPermanent,
+                            contractEndDate,
+                            appliedOn,
+                            approvedOn 
+                            FROM staff_user, (SELECT @ab:= 0)
+                            AS ab where isApproved =1";
 
                 $sqli_run=mysqli_query($conn, $sql);
                 while($row = mysqli_fetch_assoc($sqli_run))  
@@ -64,25 +88,26 @@ $to=$_POST['export-to'];
                 }  
                 fclose($output);  
     }else{
-                $sql="SELECT (@cnt := IF(@cnt IS NULL, 0,  @cnt) + 1) AS SrNo,
-                id,
-                campus,
-                staffId,
-                firstName,
-                lastName,
-                fatherName,
-                gender,
-                email,
-                mobNo,
-                address,
-                dob,
-                department,
-                joiningDate,
-                isPermanent,
-                contractEndDate,
-                appliedOn,
-                approvedOn     
-                FROM staff_user WHERE approvedOn between '$from' and '$to'";
+                $sql="SELECT @ab:=@ab+1 AS SrNo,
+                                id,
+                                campus,
+                                staffId,
+                                firstName,
+                                lastName,
+                                fatherName,
+                                gender,
+                                email,
+                                mobNo,
+                                address,
+                                dob,
+                                department,
+                                joiningDate,
+                                isPermanent,
+                                contractEndDate,
+                                appliedOn,
+                                approvedOn     
+                FROM staff_user, (SELECT @ab:= 0)
+                AS ab WHERE approvedOn between '$from' and '$to'";
 
             $sqli_run=mysqli_query($conn, $sql);
             while($row = mysqli_fetch_assoc($sqli_run))  
@@ -129,7 +154,7 @@ $to=$_POST['export-to'];
     // $result = mysqli_query($conn, $query);  
 
     if(empty($from) || empty($to) ){
-                    $sql="SELECT (@cnt := IF(@cnt IS NULL, 0,  @cnt) + 1) AS SrNo,
+                    $sql="SELECT @ab:=@ab+1 AS SrNo,
                     id,
                     campus,
                     enrollNo,
@@ -148,7 +173,8 @@ $to=$_POST['export-to'];
                     hostelNo,
                     appliedOn,
                     approvedOn            
-                FROM student_user WHERE isApproved =1";
+                FROM student_user, (SELECT @ab:= 0)
+                AS ab WHERE isApproved =1";
 
             $sqli_run=mysqli_query($conn, $sql);
             while($row = mysqli_fetch_assoc($sqli_run))  
@@ -158,7 +184,7 @@ $to=$_POST['export-to'];
             fclose($output); 
                 }  
                 else{
-                    $sql="SELECT (@cnt := IF(@cnt IS NULL, 0,  @cnt) + 1) AS SrNo,
+                    $sql="SELECT @ab:=@ab+1 AS SrNo,
                     id,
                     campus,
                     enrollNo,
@@ -177,7 +203,8 @@ $to=$_POST['export-to'];
                     hostelNo,
                     appliedOn,
                     approvedOn            
-                FROM student_user WHERE approvedOn between '$from' and '$to'";
+                FROM student_user, (SELECT @ab:= 0) AS ab 
+                WHERE approvedOn between '$from' and '$to'";
 
             $sqli_run=mysqli_query($conn, $sql);
             while($row = mysqli_fetch_assoc($sqli_run))  
