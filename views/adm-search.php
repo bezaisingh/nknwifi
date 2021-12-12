@@ -25,7 +25,7 @@ if ($_SESSION["uid"] == null){
 <body>
     <!-- Navigation bar for navstyle2.css -->
 <div class="topnav">
-  <a class="active" href="../index.html">Home</a>
+  <a class="active" href="adm-home.php">Home</a>
   <!-- <a href="#news">News</a>
   <a href="#contact">Contact</a>
   <a href="#about">About</a> -->
@@ -84,7 +84,9 @@ if ($_SESSION["uid"] == null){
                 <th>Mobile No</th>
                 <th>Applied On</th>
                 <th>Status</th>
+                <th>Remarks</th>
                 <th>Action</th>
+                
                 </thead>
                 <tbody>
                 </div>";
@@ -102,7 +104,8 @@ if ($_SESSION["uid"] == null){
                                         email,
                                         mobNo, 
                                         appliedOn, 
-                                        isApproved 
+                                        isApproved,
+                                        remarks
                                         FROM student_user WHERE enrollno='$searchKeyword' OR mobNo='$searchKeyword' OR email='$searchKeyword'");
 
                     while($row = $sql->fetch_array()){
@@ -131,6 +134,7 @@ if ($_SESSION["uid"] == null){
                     <td><?php echo $row['mobNo']?></td>
                     <td><?php echo $row['appliedOn']?></td>
                     <td><?php echo $status ?></td>
+                    <td><?php echo $row['remarks']?></td>
                     <?php 
                         if($row['isApproved']==0){
                             echo "<td><a href = '../api/approve-search.php?enrollNo=$row[enrollNo]'>Approve</td>";
@@ -159,7 +163,9 @@ if ($_SESSION["uid"] == null){
         <th>Father Name</th>
         <th>Applied On</th>
         <th>Status</th>
+        <th>Remarks</th>
         <th>Action</th>
+       
         </thead>
         <tbody>
         </div>";
@@ -175,7 +181,8 @@ if ($_SESSION["uid"] == null){
                                 designation, 
                                 fatherName,  
                                 appliedOn, 
-                                isApproved 
+                                isApproved,
+                                remarks
                                 FROM staff_user WHERE staffId='$searchKeyword' OR mobNo='$searchKeyword' OR email='$searchKeyword'");
 
             while($row = $sql->fetch_array()){
@@ -202,6 +209,7 @@ if ($_SESSION["uid"] == null){
             <td><?php echo $row['fatherName']?></td>
             <td><?php echo $row['appliedOn']?></td>
             <td><?php echo $status ?></td>
+            <td><?php echo $row['remarks']?></td>
 
             <?php 
                         if($row['isApproved']==0){

@@ -185,3 +185,14 @@ function checkSpcialChar(event){
   }
   event.returnValue = true;
 }
+//Block Special Characters ends
+
+//for popupform starts
+function openForm() {
+  document.getElementById("myForm").style.display = "block";
+}
+
+function closeForm() {
+  document.getElementById("myForm").style.display = "none";
+}
+//for popupform ends

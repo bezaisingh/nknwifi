@@ -229,14 +229,19 @@ width: 100%;
 }
       /* For two div in one line Ends */
 
-      /* For Action Button Pics  */
+/* For Action Button Pics starts  */
       .actionBtn{
         padding: 2px 2px 2px 2px;
         box-align:center;
         width: 25px;
         height: 25px; 
       }
-.small-inputbox{
+ /* For Action Button Pics ends */
+ 
+/* for reject action button inside collapsible starts  */
+ .small-inputbox{
   width: 100px;
-  height: 50; 
+  height: 30px; 
+  padding:2px;
 }
+/* for reject action button inside collapsible ends  */

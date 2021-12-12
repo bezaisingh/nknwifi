@@ -40,6 +40,7 @@ if ($_SESSION["uid"] == null){
         <link rel="stylesheet" type="text/css" href="../css/navbar.css">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" type="text/css" href="../css/modal.css">
+        <link rel="stylesheet" type="text/css" href="../css/collapsible.css">
         
     </head>
     
@@ -135,7 +136,17 @@ echo "<tr>
           <td><image id='myImg' onClick='myFunc(this)' alt='ID Back' class='table_image' src='".$row['IdBack']."'>
           <td><image id='myImg' onClick='myFunc(this)' alt='Photo' class='table_image' src='".$row['Photo']."'>
           <td><a href = '../api/approve-staff.php?staffId=$row[staffId]'><img class='actionBtn' src='../resources/approve.png'></td>
-          <td><a href = '../api/reject-staff.php?staffId=$row[staffId]'><img class='actionBtn' src='../resources/reject.png'></td>
+          <td> 
+          <button class='collapsible'><img class='actionBtn' src='../resources/reject.png'></button>
+          <div class='content'>  
+          <form action='../api/reject-staff.php' method='POST' enctype='multipart/form-data'>            
+              <input class='small-inputbox' name='remarks' placeholder='Remarks' required/> 
+              <input type='hidden' name='staffId' value='$row[staffId]'>
+              <br><br>
+              <input class='small-inputbox' type='submit' name='submit' value='Reject' /> 
+              </form>
+          </div>
+          </td>
                   
                     
       </tr>";
@@ -167,4 +178,23 @@ $conn->close();
     
     </body>
     <script text="text/javascript" src="../js/modal.js"></script>
+    
+        <!-- Below script is for collapsible -->
+        <script>
+          var coll = document.getElementsByClassName("collapsible");
+          var i;
+
+          for (i = 0; i < coll.length; i++) {
+            coll[i].addEventListener("click", function() {
+              this.classList.toggle("active");
+              var content = this.nextElementSibling;
+              if (content.style.maxHeight){
+                content.style.maxHeight = null;
+              } else {
+                content.style.maxHeight = content.scrollHeight + "px";
+              } 
+            });
+          }
+</script>
+    <!-- Above script for collapsible ends -->
 </html>

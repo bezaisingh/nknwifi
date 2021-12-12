@@ -68,6 +68,7 @@
                 <th>Mobile No</th>
                 <th>Applied On</th>
                 <th>Status</th>
+                <th>Remark</th>
                 </thead>
                 <tbody>
                 </div>";
@@ -85,7 +86,8 @@
                                         email,
                                         mobNo, 
                                         appliedOn, 
-                                        isApproved 
+                                        isApproved ,
+                                        remarks
                                         FROM student_user WHERE enrollno='$searchKeyword' OR mobNo='$searchKeyword' OR email='$searchKeyword'");
 
                     while($row = $sql->fetch_array()){
@@ -114,7 +116,8 @@
                     <td><?php echo $row['mobNo']?></td>
                     <td><?php echo $row['appliedOn']?></td>
                     <td><?php echo $status ?></td>
-                    
+                    <td><?php echo $row['remarks']?></td>
+
                     </tr>
                     <?php 
                     }

@@ -5,12 +5,15 @@ ini_set('error_reporting', E_ALL);
 
 include 'dbConfig.php';
 
-$StaffId=$_GET['staffId'];
+// $StaffId=$_GET['staffId'];
+$Remarks=$_POST['remarks'];
+$StaffId=$_POST['staffId'];
 
 //isAppoved 0 means pending, 1 means Approved, 2 means rejected.
 $sql="UPDATE staff_user
 SET isApproved = 2,
-    rejectedOn= CURDATE()
+    rejectedOn= CURDATE(),
+    remarks='$Remarks'
 WHERE staffId='$StaffId'";
 
 $sqli_run=mysqli_query($conn,$sql);

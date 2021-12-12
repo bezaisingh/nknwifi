@@ -3,50 +3,9 @@
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" type="text/css" href="../css/navbar.css">
+<link rel="stylesheet" type="text/css" href="../css/collapsible.css">
 
-<!-- CSS Starts -->
-<style>
-.collapsible {
-  /* background-color: #777; */
-  color: white;
-  cursor: pointer;
-  padding: 5px;
-  width: 95%;
-  height: fit-content;
-  border: none;
-  text-align: left;
-  outline: none;
-  float: center;
-  /* font-size: 15px; */
-}
 
-.active, .collapsible:hover {
-  background-color: #555;
-}
-
-.collapsible:after {
-  content: '\002B';
-  color: white;
-  font-weight: bold;
-  float: right;
-  margin-left: 5px;
-}
-
-.active:after {
-  content: "\2212";
-}
-
-.content {
-  /* padding: 0 18px; */
-  /* padding-top: 5px; */
-  margin-top: 5px;
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.2s ease-out;
-  /* background-color: #f1f1f1; */
-}
-</style>
-<!-- CSS ends -->
 
 
 </head>
@@ -152,12 +111,19 @@
               
              
               <td>
+             
+
               <button class='collapsible'><img class='actionBtn' src='../resources/reject.png'></button>
-              <div class='content'>              
+              <div class='content'>  
+              <form action='../api/reject.php' method='POST' enctype='multipart/form-data'>            
                   <input class='small-inputbox' name='remarks' placeholder='Reason to reject' required/> 
-                  <br>
-                  <p style='float: center;'><a href = '../api/reject.php?enrollNo=$row[enrollNo]'> REJECT </p>
-              </div></td>  
+                  <input type='hidden' name='enrollNo' value='$row[enrollNo]'>
+                  <br><br>
+                  <input class='small-inputbox' type='submit' name='submit' value='Reject' /> 
+                  </form>
+              </div>
+             
+              </td>  
                       
         </tr>";
   
