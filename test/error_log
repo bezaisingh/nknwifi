@@ -1,0 +1,8 @@
+[20-Nov-2021 10:32:29 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function get_all_records() in /home/cpausadm/public_html/ausnkn.in/test/index.php:46
+Stack trace:
+#0 {main}
+  thrown in /home/cpausadm/public_html/ausnkn.in/test/index.php on line 46
+[22-Dec-2021 05:29:54 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function get_all_records() in /home/cpausadm/public_html/ausnkn.in/test/index.php:46
+Stack trace:
+#0 {main}
+  thrown in /home/cpausadm/public_html/ausnkn.in/test/index.php on line 46

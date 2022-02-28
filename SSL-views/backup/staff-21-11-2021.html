@@ -1,0 +1,158 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>NKN Wifi</title>
+    <link rel="shortcut icon" href="../resources/favicon.ico">
+    <link rel="stylesheet" type="text/css" href="../css/navbar.css">
+</head>
+<body>
+    <!-- Navigation bar for navstyle2.css -->
+<div class="topnav">
+  <a class="active" href="../index.html">Home</a>
+  <!-- <a href="#news">News</a>
+  <a href="#contact">Contact</a>
+  <a href="#about">About</a>
+  <a style="float:right" href="queryFiles/logout.php">Logout</a> -->
+</div>
+ <!-- Navigation bar for navstyle2.css ends here -->
+           
+        <div class=center-image>
+            <img src="../resources/logo.png" alt="Varsity Logo">  
+            <h2 align="center">NKN-Internet & Wifi Access Registration Form</h2>
+          </div>
+    
+
+<div class="container">
+  <form action="../api/staffData.php" method="POST" enctype="multipart/form-data">
+<h4>For Teaching/Non Teaching Staff Members</h4>
+        <!-- ___________________________________________Radio Button Starts____________________________________________ -->
+<label width=20px for="">Campus</label>  
+<input class="radio" width=20px type="radio" id="AUS" name="campus" value="AUS" checked>
+<label style="width: 100px;" class="radio" for="AUS">AUS</label>
+
+<input class="radio" type="radio" id="AUDC" name="campus" value="AUDC">
+<label class="radio" for="AUDC">AUDC</label>
+<br><br>
+        <!-- ___________________________________________Radio Button endss____________________________________________ -->
+
+        <label width=20px for="">University ID/Appointment Letter No.</label>          
+        <input type="text" name="staff_id" required>
+        <br><br>
+
+        <label width=20px for="">First Name</label>          
+        <input type="text" name="staff_fname" required>
+        <br><br>
+        <label for="">Last Name</label>          
+        <input type="text" name="staff_lname" required>
+        <br><br>
+
+        <label for="">Father's Name</label>          
+        <input type="text" name="staff_father" required>
+        <br><br>
+<!-- ____________________________________ Gender Start _____________________________________________________ -->
+        <label width=20px for="">Gender</label>  
+        <input class="radio" width=20px type="radio" id="Male" name="staff_gender" value="Male" checked>
+        <label style="width: 100px;" class="radio" for="Male">Male</label>
+        <input class="radio" type="radio" id="Female" name="staff_gender" value="Female">
+        <label class="radio" for="Female">Female</label>
+        <br><br>
+<!-- ____________________________________ Gender End _____________________________________________________ -->
+        <label for="">Date of Birth</label>          
+        <input type="date" name="staff_dob" required>
+        <br><br>
+        <label for="">Address</label>          
+        <textarea rows="5" cols="26" name="staff_addr"
+        placeholder='House No, Street Name,        District                State                     Pin' required></textarea>
+        <br><br>
+
+        <label for="">Department/Centre/Section:</label>          
+        <input type="text" name="staff_dept" id="staff_dept" required>  
+        <br><br> 
+        <label for="">Email Id:</label>                
+        <input type="email" id="staff_email" name="staff_email" placeholder="Active ID to be given" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required> 
+        <!-- <label class="redText" for="">Active ID to be given</label> -->
+        <br><br>  
+        <label for="">Mobile Number</label>                
+
+        <!-- <input name="mobno" type = "tel" placeholder="10 digit Number only" 
+        pattern="[6-9]{1}[0-9]{3}[0-9]{3}[0-9]{3}" maxlength = "10" required/>     -->
+        <input id="mobno" name="staff_mobno" type="text" placeholder="Active No." onkeypress="return isNumber(event)" onchange="ValidateNo()" required/> 
+        <!-- <label class="redText" for="">Active No.</label> -->
+        <br><br>
+        <label for="">Designation</label>                  
+        <input type="text" name="staff_desig" required> 
+        <br><br>
+        <!-- ___________________________________________Radio Button Starts____________________________________________ -->
+        <label width=20px for="">Staff Type</label>  
+<!-- Below value is set yes / no for isPermanent column in the table -->
+<input class="radio" width=20px type="radio" id="Contractual" name="staff_type" value="NO" checked>
+<label style="width: 100px;" class="radio" for="Contractual">Contractual</label>
+
+<input class="radio" type="radio" id="Permanent" name="staff_type" value="YES">
+<label class="radio" for="Permanent">Permanent</label>
+
+<br><br>
+        <!-- ___________________________________________Radio Button ends____________________________________________ -->
+        <label for="">Date of Joining</label>                  
+        <input type="date" name="staff_dateOfJoin" required> 
+        <br><br>
+        <label for="">Completion of Contract</label>                  
+        <input type="date" name="staff_completionOfContract" >  
+        <label class="redText" for="">For Contractual Only</label>
+        <br>
+        <p class="redText">Note: Only jpg, jpeg, png format is allowed, Only Appointment Letter/University ID will be Accepted </p>
+        <br>
+        <label for="idfront">ID Front:</label>
+        <input type='file' id="idfront" name='idf' required> 
+        <label class="redText" for="">File size should not exceed 300kb</label>
+        <br><br>
+        <label for="idpb">ID Back:</label>
+        <input type='file' id="idpb" name='idb' required> 
+        <label class="redText" for="">File size should not exceed 300kb</label>
+        <br><br>
+        <label for="dp">Passport Size Photo:</label>
+        <input type='file' id="dp" name="pp" required> 
+        <label class="redText" for="">File size should not exceed 300kb</label>
+
+        
+        <br><br>
+<H4>Terms and Conditions</H4>
+<ul>
+  <li>For authentication the User ID & Password will be given only through the given Email address.</li>
+  <li>It is mandatory to change the password after first LOGIN.</li>
+  <li>Computer Centre shall not share any user information with anyone unless authorized</li>
+  <li>The User shall remain solely Responsible and Accountable for any type of misuse of Interner from his/her account. Any kind of misuse will lead the account to be deactivated whenever needed.</li>
+  <li>Any kind of Misuse may lead to Legal consequences as per IT ACT 2000 and 2008</li>
+  <li>All actions on internet are punishable in the same manner as if done in the physical space.</li>
+</ul>
+
+<H4>Undertaking</H4>
+<ul>
+  <li>I undertake that I would keep my password secret and I also understand that it is my responsibility to maintain its secrecy and I assume full responsibility for the same from the moment the password is given to me.</li>
+  <li>I also understand taht if an unauthorized person acceses the internet on my password, I will be called to question and would have to own responsibility for the same. I have put my signature onto this applicatioin form to acknowledge this accountability/responsibility.</li>
+</ul>
+
+<br>        
+        
+ <div  class="checkbox">
+            <input style="width: fit-content;" type="checkbox" value="iAgree" id="iAgree" name="iAgree" required>I declare that I have read and understoood the instructiions and also undertake to abide by all the above rules and regulations.
+ </div>
+
+ <br><br>
+
+        <label> </label>
+        <button class="btn-primary" type="submit" name="submit" value="Save">  Register </button>
+
+  </form>
+</div>
+
+<div class="footer">
+  <p>Copyright &copy Assam University, Silchar, Cachar, Assam</p>
+</div>
+
+</body>
+
+<script text="text/javascript" src="../js/functions.js"></script>
+
+</html>

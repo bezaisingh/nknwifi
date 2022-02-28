@@ -1,34 +1,51 @@
-#Not in use currently 
-
 RewriteEngine on  
-  #For Home
-RewriteRule ^home  index.html [NC,L]  
 
-#For Admin related pages
-RewriteRule ^admin-home  views/adm-home.php [NC,L]
-RewriteRule ^admin-search  views/adm-search.php [NC,L]
-RewriteRule ^admin  views/adm.html [NC,L]
+ErrorDocument 404 /404.html
 
-#For Search
-RewriteRule ^search  views/search.php [NC,L]
+#For Database Connection
+RewriteRule ^dbConfig     config/dbConfig.php [NC,L]
 
-#For Staff Related Pages
-RewriteRule ^staff-approved  views/staff-approved.php [NC,L]
-RewriteRule ^staff-pending  views/staff-pending.php [NC,L]
-RewriteRule ^staff-rejected  views/staff-rejected.php [NC,L]
-RewriteRule ^staff  views/staff.html [NC,L]
+#For Resources
+RewriteRule ^TICK  resources/approve.png [NC,L] 
+RewriteRule ^CROSS  resources/reject.png [NC,L] 
+RewriteRule ^FAVICON  resources/favicon.ico [NC,L] 
+RewriteRule ^LOGO  resources/logo.png [NC,L] 
 
-#For Student Related Pages
-RewriteRule ^student-approved  views/student-approved.php [NC,L]
-RewriteRule ^student-pending  views/student-pending.php [NC,L]
-RewriteRule ^student-rejected  views/student-rejected.php [NC,L]
-RewriteRule ^student  views/student.html [NC,L]
+#For CSS
+RewriteRule ^Navigation  css/navbar.css [NC,L] 
+RewriteRule ^COLLAPSIBLE  css/collapsible.css [NC,L] 
+RewriteRule ^MODAL  css/modal.css [NC,L] 
 
-#If Parameters needs to be passed not in use currently
-RewriteRule ^IMAGE/([a-zA-Z0-9\-=&_@\.\,\)\(]*)/([a-zA-Z0-9\-=&_@\.\,\)\(]*)/([a-zA-Z0-9\-=&_@\.\,\)\(]*)$ /image_folder/image.php?param1=$1&param2=$2&param3=$3 [NC,L]
-RewriteRule ^IMAGE/([a-zA-Z0-9\-=&_@\.\,\)\(]*)/([a-zA-Z0-9\-=&_@\.\,\)\(]*)$ /image_folder/image.php?param1=$1&param2=$2 [NC,L]
-RewriteRule ^IMAGE/([a-zA-Z0-9\-=&_@\.\,\)\(]*)$ /image_folder/image.php?param1=$1 [NC,L]
-RewriteRule ^IMAGE image_folder/image.php [NC,L]
+#For Home Page
+RewriteRule ^HOME     index.html [NC,L] 
 
- 
- 
+#For End User
+RewriteRule ^STUDENT   SSL-views/student.html [NC,L]
+RewriteRule ^STAFF     SSL-views/staff.html [NC,L]
+RewriteRule ^STATUS    SSL-views/search.php [NC,L]
+
+#For Admin
+RewriteRule ^SSS     SSL-views/adm.html [NC,L]
+RewriteRule ^AHOME     SSL-views/adm-home.php [NC,L]
+RewriteRule ^ADMSEARCH    SSL-views/adm-search.php [NC,L]
+
+
+#For exteral linl
+RewriteRule ^ADMIN  http://172.16.15.100/ausnkn.in/sss [NC,L]
+
+
+#For queries
+RewriteRule ^ALOGIN          queries/adm-login.php [NC,L]
+RewriteRule ^AdLOGIN         queries/adminlogin.php [NC,L]
+RewriteRule ^SEARCH          queries/approve-search.php [NC,L]
+RewriteRule ^STA-APPROVE     queries/approve-staff.php [NC,L]
+RewriteRule ^STU-APPROVE     queries/approve.php [NC,L]
+RewriteRule ^SIGNOUT          queries/logout.php [NC,L]
+RewriteRule ^REJ-STAFF       queries/reject-staff.php [NC,L]
+RewriteRule ^REJECT          queries/reject.php [NC,L]
+RewriteRule ^RESET           queries/reset.php [NC,L]
+RewriteRule ^STA-DATA        queries/staffData.php [NC,L]
+RewriteRule ^STUD-DATA       queries/studentData.php [NC,L]
+#RewriteRule ^UPLOAD          queries/upload.php [NC,L]
+
+
