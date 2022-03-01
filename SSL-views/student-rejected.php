@@ -28,7 +28,7 @@ if ($_SESSION["uid"] == null){
 <html>
  <title>Rejected Applicants</title>
 <div class="topnav">
-<a href="AHOME">Home</a>
+<a href="../AHOME">Home</a>
   <a href="student-approved.php">Approved</a>
   <a class="active" href="student-rejected.php">Rejected</a>
   <a href="student-pending.php">Pending</a>
