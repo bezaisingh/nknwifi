@@ -32,7 +32,7 @@ if ($_SESSION["uid"] == null){
   <a href="student-approved.php">Approved</a>
   <a href="student-rejected.php">Rejected</a>
   <a class="active" href="student-pending.php">Pending</a>
-  <a style="float:right" href="SIGNOUT">Logout</a>
+  <a style="float:right" href="../SIGNOUT">Logout</a>
 </div>
         
     <head>
