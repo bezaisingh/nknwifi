@@ -71,6 +71,7 @@ if ($_SESSION["uid"] == null){
 <th>Gender</th>
 <th>Email</th>
 <th>Phone</th>
+<th>Year of Completion</th>
 <th>ID Front</th>
 <th>ID Back</th>
 <th>Photo</th>
@@ -124,6 +125,7 @@ echo "<tr>
             <td>" . $row["gender"] . "</td>
             <td>" . $row["email"] . "</td>
             <td>" . $row["mobNo"] . "</td>
+            <td>" . $row["yearOfCompletion"] . "</td>
             <td><image id='myImg' onClick='myFunc(this)' alt='ID Front' class='table_image' src='".$row['IdFront']."'>
             <td><image id='myImg' onClick='myFunc(this)' alt='ID Back' class='table_image' src='".$row['IdBack']."'>
             <td><image id='myImg' onClick='myFunc(this)' alt='Photo' class='table_image' src='".$row['Photo']."'>
